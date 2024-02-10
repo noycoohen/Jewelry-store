@@ -3,18 +3,24 @@ import Joi from "joi";
 import { joiUserSchema } from "../validators/user.joi";
 import { joiCardSchema } from "../validators/card.joi";
 import { joiLoginSchema } from "../validators/login.joi";
+import { joiUpdateUserSchema } from "../validators/update-user.joi";
 
-type validateSchema = (schema: Joi.ObjectSchema) => RequestHandler;
+type ValidateSchema = (schema: Joi.ObjectSchema) => RequestHandler;
 
-const validateSchema: validateSchema = (schema) => async (req, res, next) => {
-  try {
-    await schema.validateAsync(req.body);
-    next();
-  } catch (e) {
-    return res.status(400).json(e);
-  }
-};
+export const validateSchema: ValidateSchema =
+  (schema) => async (req, res, next) => {
+    try {
+      //check validation
+      await schema.validateAsync(req.body);
+      //if all is good - pass to the next route
+      next();
+    } catch (e) {
+      //400 - bad request - validation failed
+      return next(e);
+    }
+  };
 
 export const validateUser = validateSchema(joiUserSchema);
-export const validateCard = validateSchema(joiCardSchema);
 export const validateLogin = validateSchema(joiLoginSchema);
+export const validateCard = validateSchema(joiCardSchema);
+export const validateUserUpdate = validateSchema(joiUpdateUserSchema);  

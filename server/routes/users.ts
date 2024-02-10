@@ -1,101 +1,114 @@
 import { Router } from "express";
-import { Login, User } from "../DB/types/db";
-import { validateLogin, validateUser } from "../middleware/validate-schema";
+import { User } from "../db/model/user.model";
+import { ILogin, IUser, IUserUpdate } from "../db/types/db";
+import {
+  validateLogin,
+  validateUser,
+  validateUserUpdate,
+} from "../middleware/validate-schema";
+import { verifyAdmin } from "../middleware/verify-admin";
 import { userService } from "../service/user.service";
-import { ApplicationError } from "../error/application-error";
-import { UserModel } from "../DB/model/user.model";
-import { verifyToken } from "../middleware/verify-token";
-import { verifyUserOrAdmin } from "../middleware/verify-user-admin";
-//import { UserModel } from "../DB/model/user.model";
+import { verifyUserOrAdmin } from "../middleware/verify-user-or-admin";
+import { verifyUser } from "../middleware/verify-user";
 
 const router = Router();
 
+//Register
 router.post("/", validateUser, async (req, res, next) => {
+  const body = req.body as IUser;
+
   try {
-    const body = req.body as User;
-    const saveUser = userService.saveUser(body);
-    return res.status(200).json(saveUser);
-  } catch (err) {
-    next(err);
+    const savedUser = await userService.saveUser(body);
+    return res.status(200).json(savedUser);
+  } catch (e) {
+    return res.status(400).json(e);
   }
 });
 
-//login:
+//Login:
 router.post("/login", validateLogin, async (req, res, next) => {
   try {
-    const { password, email } = req.body as Login;
-    const token = await userService.loginUser(email, password);
+    const { email, password } = req.body as ILogin;
+    const token = await userService.login(email, password);
     return res.status(200).json({ token });
-  } catch (err) {
-    next(err);
+  } catch (e) {
+    next(e);
   }
 });
 
-//get all users:
-router.get("/", verifyToken, async (req, res, next) => {
-  const users = await userService.getUsers();
-  return res.json(users);
+//Get all users
+router.get("/", verifyAdmin, async (req, res, next) => {
+  const users = await User.find();
+  res.json(users);
 });
 
-//gey user by id:
+//Get user by id:
 router.get("/:id", verifyUserOrAdmin, async (req, res, next) => {
   try {
     const id = req.params.id;
-    const user = await userService.userById(id);
-    return res.status(200).json({ userId: user });
-  } catch (err) {
-    next(err);
+
+    const user = await User.findById(id);
+    if (!user) {
+      return res.status(404).json({ message: `user with id: ${id} Not found` });
+    }
+    res.json(user);
+  } catch (e) {
+    next(e);
   }
 });
 
-//Update/edit user by id
-router.put("/:id", verifyUserOrAdmin, async (req, res, next) => {
+//Update user by id:
+router.put("/:id", verifyUser, validateUser, async (req, res, next) => {
   try {
     const id = req.params.id;
-    await userService.userById(id);
-    const userUpdate = await userService.updateUser(id, req.body);
-    res.send({
-      user: userUpdate,
-      success: true,
-      message: "User updated successfully",
+    const body = req.body as IUser;
+
+    const updatedUser = await User.findByIdAndUpdate(id, body, {
+      new: true,
     });
-  } catch (err) {
-    next(err);
+
+    if (!updatedUser) {
+      return res.status(404).json({ message: `user with id: ${id} Not found` });
+    }
+    const savedUser = await userService.saveUser(updatedUser);
+    res.json(savedUser);
+  } catch (e) {
+    next(e);
   }
 });
 
-//change isBusiness status
-router.patch("/:id", async (req, res, next) => {
+//Patch user by id:
+router.patch("/:id", verifyUser, validateUserUpdate, async (req, res, next) => {
   try {
-    const userId = req.params.id;
-    const pipeline = [{ $set: { isBusiness: { $not: "$isBusiness" } } }];
-    const user = await UserModel.findByIdAndUpdate(userId, pipeline);
-    if (!user)
-      throw new Error(
-        "Could not update this user isBusiness status because a user with this id cannot be found in the database"
-      );
-    return res.json({ user });
-  } catch (err) {
-    next(err);
+    const id = req.params.id;
+    const body = req.body as IUserUpdate;
+
+    const updatedUser = await User.findByIdAndUpdate(id, body, {
+      new: true,
+    });
+    if (!updatedUser) {
+      return res.status(404).json({
+        message: `Could not update this user isBusiness status because a user with this ${id} cannot be found in the database`,
+      });
+    }
+    res.json(updatedUser);
+  } catch (e) {
+    next(e);
   }
 });
 
+//Delete user by id:
 router.delete("/:id", verifyUserOrAdmin, async (req, res, next) => {
   try {
-    const userId = req.params.id;
-    let user = await UserModel.findById(userId);
-    if (user?.isAdmin) {
-      throw new Error("you could not delete admin user");
+    const id = req.params.id;
+
+    const deletedUser = await User.findByIdAndDelete(id);
+    if (!deletedUser) {
+      return res.status(404).json({ message: `user with id: ${id} Not found` });
     }
-    user = await UserModel.findByIdAndDelete(userId);
-    if (!user) {
-      throw new Error(
-        "Could not delete this user because a user with this id cannot be found in the database"
-      );
-    }
-    return res.json({ message: "delete succsess", user });
-  } catch (err) {
-    next(err);
+    res.json({ message: "delete success", deletedUser });
+  } catch (e) {
+    next(e);
   }
 });
 export default router;

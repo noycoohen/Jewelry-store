@@ -3,7 +3,7 @@ import { ApplicationError } from "../error/application-error";
 import jwt from "jsonwebtoken";
 import { RequestUser } from "../@types/express";
 
-export const verifyToken: RequestHandler = (req, res, next) => {
+export const verifyUserOrAdmin: RequestHandler = (req, res, next) => {
   //get the Auth header:
   const header = req.headers.authorization;
 
@@ -24,8 +24,17 @@ export const verifyToken: RequestHandler = (req, res, next) => {
     //pass the data to req.user
     req.user = payload;
 
-    next();
+    if (req.user?.isAdmin) {
+      return next();
+    }
+
+    if (req.params.id === req.user?.id) {
+      return next();
+    }
+
+    //not admin, and not same user -> throw error:
+    throw new ApplicationError(401, "Only registered user or admin");
   } catch (e) {
-    throw new ApplicationError(500, "...");
+    next(e);
   }
 };

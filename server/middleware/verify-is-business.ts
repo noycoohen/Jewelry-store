@@ -2,8 +2,9 @@ import { RequestHandler } from "express";
 import { ApplicationError } from "../error/application-error";
 import jwt from "jsonwebtoken";
 import { RequestUser } from "../@types/express";
+import { User } from "../db/model/user.model";
 
-export const verifyToken: RequestHandler = (req, res, next) => {
+export const verifyIsBusiness: RequestHandler = async (req, res, next) => {
   //get the Auth header:
   const header = req.headers.authorization;
 
@@ -24,8 +25,13 @@ export const verifyToken: RequestHandler = (req, res, next) => {
     //pass the data to req.user
     req.user = payload;
 
-    next();
+    const user = await User.findById(req.user?.id);
+    if (user?.isBusiness === true) {
+      next();
+    } else {
+      next(new ApplicationError(403, "You are not a business user"));
+    }
   } catch (e) {
-    throw new ApplicationError(500, "...");
+    next(e);
   }
 };

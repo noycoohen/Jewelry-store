@@ -1,24 +1,24 @@
 import { Schema } from "mongoose";
-import { Name } from "../types/db";
+import { IName } from "../types/db";
 
-export const nameSchema = new Schema<Name>({
+export const nameSchema = new Schema<IName>({
   first: {
     type: String,
     required: true,
-    min: 2,
-    max: 256,
+    minlength: 2,
+    maxlength: 256,
   },
   middle: {
     type: String,
     required: false,
     default: "",
-    min: 2,
-    max: 256,
+    minlength: 0,
+    maxlength: 256,
   },
   last: {
     type: String,
     required: true,
-    min: 2,
-    max: 256,
+    minlength: 2,
+    maxlength: 256,
   },
 });

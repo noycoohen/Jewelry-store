@@ -1,10 +1,10 @@
 import { Schema } from "mongoose";
-import { User } from "../types/db";
+import { IUser } from "../types/db";
+import { addressSchema } from "./address.schema";
 import { nameSchema } from "./name.schema";
 import { imageSchema } from "./image.schema";
-import { addressSchema } from "./address.schema";
 
-export const userSchema = new Schema<User>({
+export const userSchema = new Schema<IUser>({
   name: {
     type: nameSchema,
     required: true,
@@ -12,24 +12,25 @@ export const userSchema = new Schema<User>({
   phone: {
     type: String,
     required: true,
-    min: 9,
-    max: 11,
+    maxlength: 11,
   },
   email: {
-    type: String,
     unique: true,
-    requierd: true,
-    min: 5,
+    type: String,
+    required: true,
+    minlength: 5,
+    maxlength: 30,
   },
   password: {
     type: String,
     required: true,
-    min: 7,
-    max: 1024,
   },
   image: {
     type: imageSchema,
     required: false,
+    default: {
+      url: "https://cdn-icons-png.flaticon.com/512/6596/6596121.png",
+    },
   },
   address: {
     type: addressSchema,
@@ -37,7 +38,8 @@ export const userSchema = new Schema<User>({
   },
   isBusiness: {
     type: Boolean,
-    required: true,
+    required: false,
+    default: false,
   },
   isAdmin: {
     type: Boolean,
@@ -45,3 +47,5 @@ export const userSchema = new Schema<User>({
     default: false,
   },
 });
+
+//IUser{isAdmin?: boolean}

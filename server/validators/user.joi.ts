@@ -1,27 +1,27 @@
 import Joi from "joi";
-import { Address, Image, Name, User } from "../DB/types/db";
-import { patterns } from "./regex";
+import { IAddress, IImage, IName, IUser } from "../db/types/db";
+import { patterns } from "./regex-patterns";
 
-export const joiUserSchema = Joi.object<User>({
+export const joiUserSchema = Joi.object<IUser>({
   email: Joi.string().email().min(5).max(30).required(),
-  password: Joi.string().pattern(patterns.password).min(7).max(20).required(),
-  phone: Joi.string().pattern(patterns.phone).min(9).max(11).required(),
+  password: Joi.string().pattern(patterns.password).min(7).required(),
   isBusiness: Joi.boolean().required(),
-  name: Joi.object<Name>({
+  phone: Joi.string().pattern(patterns.phone).min(9).max(11).required(),
+  name: Joi.object<IName>({
     first: Joi.string().min(2).max(256).required(),
-    middle: Joi.string().min(2).max(256),
+    middle: Joi.string().min(0).max(256),
     last: Joi.string().min(2).max(256).required(),
   }),
-  address: Joi.object<Address>({
-    state: Joi.string().min(2).max(256),
+  address: Joi.object<IAddress>({
     country: Joi.string().min(2).max(256).required(),
     city: Joi.string().min(2).max(256).required(),
     street: Joi.string().min(2).max(256).required(),
+    state: Joi.string().min(2).max(256),
+    zip: Joi.number().min(2).required(),
     houseNumber: Joi.number().min(2).max(256).required(),
-    zip: Joi.number().min(2).max(256).required(),
   }),
-  image: Joi.object<Image>({
+  image: Joi.object<IImage>({
     alt: Joi.string().min(2).max(256),
-    url: Joi.string().uri().min(14),
+    url: Joi.string().uri().min(14).max(100),
   }),
 });

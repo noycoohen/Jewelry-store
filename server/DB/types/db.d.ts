@@ -1,56 +1,65 @@
-import mongoose from "mongoose";
+import { IUser } from "./db.d";
+import mongoose, { Date } from "mongoose";
+import { type } from "os";
 
-//type of user:
-export type Name = {
+export type IRole = {
+  name: string;
+};
+
+export type IName = {
   first: string;
   middle: string;
   last: string;
 };
 
-export type Address = {
+export type IAddress = {
   state: string;
   country: string;
   city: string;
   street: string;
   houseNumber: number;
-  zip: number;
+  zip?: number;
 };
 
-export type Image = {
+export type IImage = {
   url: string;
   alt: string;
 };
 
-export type User = {
-  name: Name;
+export type IUser = {
+  name: IName;
   isBusiness: boolean;
   phone: string;
   email: string;
   password: string;
-  address: Address;
-  image: Image;
+  image: IImage;
+  address: IAddress;
   isAdmin?: boolean;
 };
 
-export type cardInput = {
+export type ICardInput = {
   title: string;
   subtitle: string;
   description: string;
   phone: string;
   email: string;
   web: string;
-  image: Image;
-  address: Address;
+  image: IImage;
+  address: IAddress;
 };
 
-export type Card = cardInput & {
+export type ICard = ICardInput & {
   bizNumber: number;
   likes: string[];
   user_id: mongoose.Types.ObjectId;
   createdAt: Date;
 };
 
-export type Login = {
+export type ILogin = {
   email: string;
   password: string;
+};
+
+export type IUserUpdate = {
+  isBusiness: boolean;
 };

@@ -1,17 +1,5 @@
-// import { RequestHandler } from "express";
-
 import morgan from "morgan";
-//import { format } from "path";
 
-// const logger: RequestHandler = (req, res, next) => {
-//   console.log(req.method, req.url);
+const format = process.env.NODE_ENV == "prod" ? "tiny" : "dev";
 
-//   next();
-// };
-
-// export default logger;
-
-//LOGGER WITH MORGAN LIBARY:
-//const format =
-
-export const logger = morgan("common");
+export const logger = morgan(format);

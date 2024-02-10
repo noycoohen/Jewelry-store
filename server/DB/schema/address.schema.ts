@@ -1,41 +1,33 @@
 import { Schema } from "mongoose";
-import { Address } from "../types/db";
+import { IAddress } from "../types/db";
 
-export const addressSchema = new Schema<Address>({
-  state: {
+export const addressSchema = new Schema<IAddress>({
+  city: {
     type: String,
-    required: false,
-    min: 2,
-    max: 256,
+    required: true,
+    maxlength: 256,
   },
   country: {
     type: String,
     required: true,
-    min: 2,
-    max: 256,
-  },
-  city: {
-    type: String,
-    requierd: true,
-    min: 2,
-    max: 256,
-  },
-  street: {
-    type: String,
-    requierd: true,
-    min: 2,
-    max: 256,
+    maxlength: 256,
   },
   houseNumber: {
     type: Number,
-    requierd: true,
+    required: true,
     min: 2,
-    max: 256,
+    maxlength: 256,
   },
-  zip: {
-    type: Number,
-    requierd: true,
-    min: 2,
-    max: 256,
+  zip: { type: Number, required: true, min: 2 },
+  state: {
+    type: String,
+    required: false,
+    default: "",
+    maxlength: 30,
+  },
+  street: {
+    type: String,
+    required: true,
+    maxlength: 256,
   },
 });

@@ -1,27 +1,44 @@
 import express from "express";
-//import { config } from "dotenv";
-import userRouter from "./routes/users";
-import cardRouter from "./routes/cards";
-import notFound from "./middleware/notFound";
-import { connect } from "./DB/utils/connection";
+import usersRouter from "./routes/users";
+import cardsRouter from "./routes/cards";
 import { logger } from "./middleware/logger";
-import { configEnv } from "./environment";
+import { connect } from "./db/utils/connection";
+import { errorHandler } from "./middleware/error-handler";
+import { configEnv } from "./environments";
+import cors from "cors";
+import chalk from "chalk";
+import path from "path";
+import { initDatabase } from "./db/utils/initDataBase";
 
 configEnv();
+
 connect();
-
 const app = express();
-app.use(express.json());
 
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+  })
+);
+
+app.use(express.json());
+app.use(logger);
+
+// serve the static files in the public directory
 app.use(express.static("public"));
 
-app.use(logger);
-app.use("/api/v1/users", userRouter);
-app.use("/api/v1/cards", cardRouter);
-app.use(notFound);
+app.use("/api/v1/users", usersRouter);
+app.use("/api/v1/cards", cardsRouter);
+
+app.use(errorHandler);
+
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "notFound.html"));
+});
 
 const PORT = process.env.EXPRESS_PORT;
 
 app.listen(PORT, () => {
-  console.log(`Server is running on:http://localhost:${PORT}`);
+  initDatabase();
+  console.log(chalk.yellow(`App is running on http://localhost:${PORT}`));
 });
