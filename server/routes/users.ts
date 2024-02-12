@@ -81,7 +81,7 @@ router.put("/:id", verifyUser, validateUser, async (req, res, next) => {
 router.patch("/:id", verifyUser, validateUserUpdate, async (req, res, next) => {
   try {
     const id = req.params.id;
-    const body = req.body as IUserUpdate;
+    const body = req.body; //as IUserUpdate;
 
     const updatedUser = await User.findByIdAndUpdate(id, body, {
       new: true,
