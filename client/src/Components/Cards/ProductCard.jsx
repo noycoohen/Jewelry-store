@@ -6,11 +6,10 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Link } from "@mui/material";
-import ROUTES from "../Router/RouterModel";
 
 export default function ProductCard(props) {
   return (
-    <Link href={`/product${ROUTES.PRODUCT_ID}`} underline="none">
+    <Link href={`/product/${props.id}`} underline="none">
       <Card
         sx={{
           maxWidth: 345,

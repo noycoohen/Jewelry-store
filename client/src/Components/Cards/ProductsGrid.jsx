@@ -15,6 +15,7 @@ export const ProductsGrid = ({ products }) => {
         <Grid item sx={3}>
           <ProductCard
             key={product.id}
+            id={product.id}
             image={product.imagePath}
             title={product.title}
             description={product.description}

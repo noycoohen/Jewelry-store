@@ -8,7 +8,11 @@ const ROUTES = {
   CART: "/cart",
   FAVPRODUCTS: "/favorite-products",
   CRM: "/crm",
-  PRODUCT_ID: "/product/:id",
+  SINGLE_PRODUCT: "/product/:productId",
 };
 
 export default ROUTES;
+
+// user: /product/100/red
+// router: /product/:productId/:color
+// component: params.productId -> 100, parama.color -> red
