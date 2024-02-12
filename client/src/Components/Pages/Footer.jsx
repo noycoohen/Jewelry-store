@@ -9,7 +9,6 @@ import { Box } from "@mui/material";
 export default function Footer() {
   return (
     <Box
-      position={"fixed"}
       width={"100%"}
       bottom={0}
       component="footer"

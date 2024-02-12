@@ -12,7 +12,3 @@ const ROUTES = {
 };
 
 export default ROUTES;
-
-// user: /product/100/red
-// router: /product/:productId/:color
-// component: params.productId -> 100, parama.color -> red
