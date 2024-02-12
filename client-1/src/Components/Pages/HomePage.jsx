@@ -1,0 +1,67 @@
+import homeImg from "../../Services/Images/home1.jpg";
+import Button from "@mui/material/Button";
+import SendIcon from "@mui/icons-material/Send";
+import Stack from "@mui/material/Stack";
+import { ProductsGrid } from "../Cards/ProductsGrid";
+import { products } from "../../Services/Cards/data";
+import { useNavigate } from "react-router-dom";
+
+const HomePage = () => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    console.log("woww");
+    navigate("/cards");
+  };
+
+  return (
+    <div style={{ position: "relative" }}>
+      <img
+        style={{ width: "100%", height: "auto" }}
+        src={homeImg}
+        alt="homepage"
+      />
+      <div
+        style={{
+          position: "absolute",
+          top: "10%",
+          left: "5%",
+          color: "white",
+          textAlign: "center",
+        }}
+      >
+        <h1
+          style={{
+            fontSize: "4vw",
+            margin: 0,
+            "@media (max-width: 600px)": {
+              fontSize: "6vw",
+            },
+          }}
+        >
+          JEWERLY SHOP
+        </h1>
+        <Stack
+          direction="row"
+          spacing={2}
+          sx={{
+            marginTop: "20px",
+            "@media (max-width: 600px)": {
+              marginTop: "10px",
+            },
+          }}
+        >
+          <Button
+            variant="outlined"
+            endIcon={<SendIcon />}
+            onClick={handleClick}
+          >
+            SHOP NOW
+          </Button>
+        </Stack>
+      </div>
+      <ProductsGrid products={products.slice(0, 6)} />
+    </div>
+  );
+};
+
+export default HomePage;
