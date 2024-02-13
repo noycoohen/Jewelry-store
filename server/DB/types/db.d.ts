@@ -23,6 +23,7 @@ export type ICardInput = {
 
 export type ICard = ICardInput & {
   likes: string[];
+  user_id: mongoose.Types.ObjectId;
   createdAt: Date;
 };
 

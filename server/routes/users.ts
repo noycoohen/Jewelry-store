@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { User } from "../db/model/user.model";
-import { ILogin, IUser, IUserUpdate } from "../db/types/db";
+import { ILogin, IUser } from "../db/types/db";
 import {
   validateLogin,
   validateUser,
