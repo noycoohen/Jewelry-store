@@ -98,7 +98,7 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkFkbWluQ
     "url": "https://picsum.photos/200",
     "alt": "John Doe"
   },
-  "price":30
+  "price":"30"
 }
 
 ### edit a products:

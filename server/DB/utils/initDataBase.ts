@@ -1,6 +1,6 @@
 import chalk from "chalk";
 import { userService } from "../../service/user.service";
-import { Card } from "../model/card.model";
+import { Card } from "../model/product.model";
 import { User } from "../model/user.model";
 
 export const initDatabase = async () => {

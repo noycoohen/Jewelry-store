@@ -1,11 +1,7 @@
 import { Router } from "express";
-import { Card } from "../db/model/card.model";
+import { Card } from "../db/model/product.model";
 import { verifyToken } from "../middleware/verify-token";
 import { validateCard } from "../middleware/validate-schema";
-import { verifyIsBusiness } from "../middleware/verify-is-business";
-
-import { verifyCardUser } from "../middleware/verify-card-user";
-import { ApplicationError } from "../error/application-error";
 import { User } from "../db/model/user.model";
 import { verifyAdmin } from "../middleware/verify-admin";
 

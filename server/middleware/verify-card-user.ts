@@ -2,7 +2,7 @@ import { RequestHandler } from "express";
 import { ApplicationError } from "../error/application-error";
 import jwt from "jsonwebtoken";
 import { RequestUser } from "../@types/express";
-import { Card } from "../db/model/card.model";
+import { Card } from "../db/model/product.model";
 import { User } from "../db/model/user.model";
 
 export const verifyCardUser: RequestHandler = async (req, res, next) => {
