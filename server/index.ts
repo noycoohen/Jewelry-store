@@ -28,7 +28,7 @@ app.use(logger);
 app.use(express.static("public"));
 
 app.use("/api/v1/users", usersRouter);
-app.use("/api/v1/cards", cardsRouter);
+app.use("/api/v1/products", cardsRouter);
 
 app.use(errorHandler);
 

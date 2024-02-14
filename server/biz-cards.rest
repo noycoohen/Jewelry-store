@@ -76,18 +76,18 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkFkbWluQ
 
 
 ### get all products:
-GET http://localhost:8080/api/v1/cards
+GET http://localhost:8080/api/v1/products
 
 ### get my products:
-GET http://localhost:8080/api/v1/cards/my-cards
+GET http://localhost:8080/api/v1/products/my-cart
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkFkbWluQGV4YW1wbGUuY29tIiwiaWQiOiI2NTdlYmI0YmMxMDU2NDdlZDhjNjBhOTYiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE3MDI4MTIyNzF9.XjmFKYicKFyGhWEIBG1zrVqhW20eZW3_7u5_yVf8HAU
 
 ### get products by id:
-GET http://localhost:8080/api/v1/cards/657ebb4cc105647ed8c60aac
+GET http://localhost:8080/api/v1/products/65cd01dd835b273925080e9f
 
 
 ### post a products:
-POST http://localhost:8080/api/v1/cards
+POST http://localhost:8080/api/v1/products
 Content-Type: application/json
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkFkbWluQGV4YW1wbGUuY29tIiwiaWQiOiI2NWNiYTUwOGNiNGM5MWUwZTBjM2FkMjciLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE3MDc4NDQ5ODR9.eqLidaa_zWWtweQEhzi3Axh3u_g5mr1ZxF-JudbtYoQ
 
@@ -101,19 +101,25 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkFkbWluQ
   "price":30
 }
 
-### update a products:
-PUT http://localhost:8080/api/v1/cards/657eddf8704b3a28125d95cf
+### edit a products:
+PUT http://localhost:8080/api/v1/products/65cd01dd835b273925080e9f
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5veUBlbWFpbC5jb20iLCJpZCI6IjY1N2VjMmM2YzEwNTY0N2VkOGM2MGFkMSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3MDI4MTQ2NjZ9.lXfcu7NedSCP8vzeRnl-csI4jt3B7HaoxVSJBaGe4Eg
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkFkbWluQGV4YW1wbGUuY29tIiwiaWQiOiI2NWNiYTUwOGNiNGM5MWUwZTBjM2FkMjciLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE3MDc5MzQ2MDZ9.C63iQRP3hqQJcJ3iztIQ8uMyzKMOciUUI7dYyobbdQ0
 
 {
-  "title": "not Marvel"
+  "title": "shoes",
+  "description": "Experienced software engineer with a passion for developing innovative programs that expedite the efficiency and effectiveness of organizational success.",
+  "image": {
+    "url": "https://picsum.photos/200",
+    "alt": "John Doe"
+  },
+  "price":30
 }
 
 ###like products
-PATCH http://localhost:8080/api/v1/cards/657eddf8704b3a28125d95cf
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkJ1c2luZXNzQGV4YW1wbGUuY29tIiwiaWQiOiI2NTdlYmI0Y2MxMDU2NDdlZDhjNjBhOWUiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNzAyODE1MzE0fQ.OaHJxCrrCfQBkqlQgSF1RMCLZftR8ETsy5LUdnR63r0
+PATCH http://localhost:8080/api/v1/products/65cd01dd835b273925080e9f
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5veXlAZW1haWwuY29tIiwiaWQiOiI2NWNiYTM5OWNiNGM5MWUwZTBjM2FkMjQiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNzA3OTM1MzQxfQ.4VT2dYVkofWsBQDN4cAkeW_t1T8crxOpC6HuLk0s6gU
 
 ### delete products:
-DELETE http://localhost:8080/api/v1/cards/65cbb4bdc49c93e7501f3a06
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkFkbWluQGV4YW1wbGUuY29tIiwiaWQiOiI2NWNiYTUwOGNiNGM5MWUwZTBjM2FkMjciLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE3MDc4NDQ5ODR9.eqLidaa_zWWtweQEhzi3Axh3u_g5mr1ZxF-JudbtYoQ
+DELETE http://localhost:8080/api/v1/products/65cbb4bdc49c93e7501f3a06
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5veXlAZW1haWwuY29tIiwiaWQiOiI2NWNiYTM5OWNiNGM5MWUwZTBjM2FkMjQiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNzA3OTM1MzQxfQ.4VT2dYVkofWsBQDN4cAkeW_t1T8crxOpC6HuLk0s6gU

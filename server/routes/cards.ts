@@ -11,7 +11,7 @@ import { verifyAdmin } from "../middleware/verify-admin";
 
 const router = Router();
 
-//Get all cards
+//Get all products
 router.get("/", async (req, res, next) => {
   try {
     const cards = await Card.find();
@@ -21,8 +21,8 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-//Get my cards
-router.get("/my-cards", verifyToken, async (req, res, next) => {
+//Get products that user add
+router.get("/my-cart", verifyToken, async (req, res, next) => {
   try {
     const userId = req.user?.id;
 
@@ -36,7 +36,7 @@ router.get("/my-cards", verifyToken, async (req, res, next) => {
   }
 });
 
-//Get card by id
+//Get product by id
 router.get("/:id", async (req, res, next) => {
   try {
     const id = req.params.id;
@@ -51,7 +51,7 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-//Post a card
+//Post a product
 router.post("/", verifyAdmin, validateCard, async (req, res, next) => {
   try {
     const userId = req.user?.id;
@@ -62,8 +62,8 @@ router.post("/", verifyAdmin, validateCard, async (req, res, next) => {
   }
 });
 
-//Update card by id
-router.put("/:id", verifyIsBusiness, async (req, res, next) => {
+//Edit product by id
+router.put("/:id", verifyAdmin, validateCard, async (req, res, next) => {
   try {
     const card = req.body;
     const cardId = req.params.id;
@@ -78,13 +78,6 @@ router.put("/:id", verifyIsBusiness, async (req, res, next) => {
     }
     console.log(existingCard.user_id);
     console.log(userId);
-
-    // Check if the authenticated user is the creator of the card
-    if (existingCard.user_id.toString() !== userId) {
-      return res
-        .status(403)
-        .json({ message: "Unauthorized: You can only update your own cards" });
-    }
 
     const updatedCard = await Card.findByIdAndUpdate(cardId, card, {
       new: true,
@@ -101,7 +94,7 @@ router.put("/:id", verifyIsBusiness, async (req, res, next) => {
   }
 });
 
-//Like card
+//Like products
 router.patch("/:id", verifyToken, async (req, res, next) => {
   const cardId = req.params.id;
   const user = req.user;
@@ -130,7 +123,7 @@ router.patch("/:id", verifyToken, async (req, res, next) => {
   }
 });
 
-//Delete card
+//Delete products
 router.delete("/:id", verifyAdmin, async (req, res, next) => {
   try {
     const cardId = req.params.id;
