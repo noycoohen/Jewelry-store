@@ -48,57 +48,45 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IlJlZ3VsY
 
 
 ### update a user:
-PUT http://localhost:8080/api/v1/users/657ec2c6c105647ed8c60ad1
+PUT http://localhost:8080/api/v1/users/65cba399cb4c91e0e0c3ad24
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5veUBlbWFpbC5jb20iLCJpZCI6IjY1N2VjMmM2YzEwNTY0N2VkOGM2MGFkMSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3MDI4MDY0MzJ9.fQxxhTxbA29BAyUusrsXv1rOhN2DQHx5FTWtPy1BqQ0
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5veXlAZW1haWwuY29tIiwiaWQiOiI2NWNiYTM5OWNiNGM5MWUwZTBjM2FkMjQiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNzA3OTMwNzA3fQ.UYHeaNUt7wYYOuEMamRLGmJ4bI8pnzS0QCaj4sL1beo
 
 {
-  "name": {
-    "first": "NOY",
-    "middle": "a",
-    "last": "Cohen"
-  },
-  "phone": "0512345567",
-  "email": "noy@email.com",
-  "password": "Abc!123Abc",
-  "address": {
-    "state": "IL",
-    "country": "Israel",
-    "city": "Arad",
-    "street": "Shoham",
-    "houseNumber": 5,
-    "zip": 8920435
-  },
-  "isBusiness": true
+  
+  "name": "kiara",
+  "email": "noyy@email.com",
+  "password": "Abc!123Abc"
+
 }
 
 
 ### partial update a user (only isBusiness):
-PATCH http://localhost:8080/api/v1/users/657ec2c6c105647ed8c60ad1
-Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5veUBlbWFpbC5jb20iLCJpZCI6IjY1N2VjMmM2YzEwNTY0N2VkOGM2MGFkMSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3MDI4MDY3OTB9.dDBxl9alM7QLa1gIuQYjKrV56nfMDvEI37jd3GgRQzc
+# PATCH http://localhost:8080/api/v1/users/657ec2c6c105647ed8c60ad1
+# Content-Type: application/json
+# Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5veUBlbWFpbC5jb20iLCJpZCI6IjY1N2VjMmM2YzEwNTY0N2VkOGM2MGFkMSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3MDI4MDY3OTB9.dDBxl9alM7QLa1gIuQYjKrV56nfMDvEI37jd3GgRQzc
 
-{
-  "isBusiness": true
-}
+# {
+#   "isBusiness": true
+# }
 
 ### delete a user:
-DELETE http://localhost:8080/api/v1/users/65645f92dde85faea9d3e380
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVsbHZpc0BlbWFpbC5jb20iLCJpZCI6IjY1NjQ1ZjkyZGRlODVmYWVhOWQzZTM4MCIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3MDEwNzY4OTV9.XSHs3UIAgz3qTppwdVvs9Ldpq5AbvtLH-pUPOC_CtDg
+DELETE http://localhost:8080/api/v1/users/65c5ef166cd1182384efccc1
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkFkbWluQGV4YW1wbGUuY29tIiwiaWQiOiI2NWNiYTUwOGNiNGM5MWUwZTBjM2FkMjciLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE3MDc5MzEyODh9.hoaXs_aWVhb2jiP0K1DAkRngkRe77BNYX_A5BcZlMYQ
 
 
-### get all cards:
+### get all products:
 GET http://localhost:8080/api/v1/cards
 
-### get my cards:
+### get my products:
 GET http://localhost:8080/api/v1/cards/my-cards
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkFkbWluQGV4YW1wbGUuY29tIiwiaWQiOiI2NTdlYmI0YmMxMDU2NDdlZDhjNjBhOTYiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE3MDI4MTIyNzF9.XjmFKYicKFyGhWEIBG1zrVqhW20eZW3_7u5_yVf8HAU
 
-### get card by id:
+### get products by id:
 GET http://localhost:8080/api/v1/cards/657ebb4cc105647ed8c60aac
 
 
-### post a card:
+### post a products:
 POST http://localhost:8080/api/v1/cards
 Content-Type: application/json
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkFkbWluQGV4YW1wbGUuY29tIiwiaWQiOiI2NWNiYTUwOGNiNGM5MWUwZTBjM2FkMjciLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE3MDc4NDQ5ODR9.eqLidaa_zWWtweQEhzi3Axh3u_g5mr1ZxF-JudbtYoQ
@@ -113,7 +101,7 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkFkbWluQ
   "price":30
 }
 
-### update a card:
+### update a products:
 PUT http://localhost:8080/api/v1/cards/657eddf8704b3a28125d95cf
 Content-Type: application/json
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5veUBlbWFpbC5jb20iLCJpZCI6IjY1N2VjMmM2YzEwNTY0N2VkOGM2MGFkMSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3MDI4MTQ2NjZ9.lXfcu7NedSCP8vzeRnl-csI4jt3B7HaoxVSJBaGe4Eg
@@ -122,10 +110,10 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5veUBlb
   "title": "not Marvel"
 }
 
-###like card
+###like products
 PATCH http://localhost:8080/api/v1/cards/657eddf8704b3a28125d95cf
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkJ1c2luZXNzQGV4YW1wbGUuY29tIiwiaWQiOiI2NTdlYmI0Y2MxMDU2NDdlZDhjNjBhOWUiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNzAyODE1MzE0fQ.OaHJxCrrCfQBkqlQgSF1RMCLZftR8ETsy5LUdnR63r0
 
-### delete card:
+### delete products:
 DELETE http://localhost:8080/api/v1/cards/65cbb4bdc49c93e7501f3a06
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkFkbWluQGV4YW1wbGUuY29tIiwiaWQiOiI2NWNiYTUwOGNiNGM5MWUwZTBjM2FkMjciLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE3MDc4NDQ5ODR9.eqLidaa_zWWtweQEhzi3Axh3u_g5mr1ZxF-JudbtYoQ
