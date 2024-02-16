@@ -9,4 +9,5 @@ export const cardSchema = new Schema<ICard>({
   price: { type: Number, required: true, minlength: 2 },
   likes: { type: [String], required: false, default: [] },
   createdAt: { type: Date, required: false, default: Date.now },
+  user_id: { type: Schema.Types.ObjectId, ref: "User", required: true },
 });

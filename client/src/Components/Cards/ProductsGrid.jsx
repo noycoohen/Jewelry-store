@@ -3,6 +3,7 @@ import ProductCard from "./ProductCard";
 import { Grid } from "@mui/material";
 
 export const ProductsGrid = ({ products }) => {
+  debugger;
   return (
     <Grid
       container
@@ -14,9 +15,9 @@ export const ProductsGrid = ({ products }) => {
       {products.map((product) => (
         <Grid item sx={3}>
           <ProductCard
-            key={product.id}
-            id={product.id}
-            image={product.imagePath}
+            key={product._id}
+            id={product._id}
+            image={product.image?.url}
             title={product.title}
             description={product.description}
             price={product.price}

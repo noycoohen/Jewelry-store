@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 export const SingleProductPage = () => {
   let params = useParams();
 
-  const [product, setProduct] = useState({ title: "blablabla" });
+  const [product, setProduct] = useState({});
 
   useEffect(() => {
     axios
