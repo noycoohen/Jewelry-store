@@ -16,12 +16,14 @@ export function SingleProductGrid({ product }) {
         }}
         key={product.id}
       >
-        <CardMedia
-          component="img"
-          alt="jewelry"
-          height="300"
-          image={product.imagePath}
-        />
+        {
+          <CardMedia
+            component="img"
+            alt="jewelry"
+            height="300"
+            image={product.image?.url}
+          />
+        }
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             {product.title}
