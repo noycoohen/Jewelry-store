@@ -3,7 +3,6 @@ import ProductCard from "./ProductCard";
 import { Grid } from "@mui/material";
 
 export const ProductsGrid = ({ products }) => {
-  debugger;
   return (
     <Grid
       container

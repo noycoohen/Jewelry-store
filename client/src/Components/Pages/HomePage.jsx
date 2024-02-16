@@ -3,10 +3,18 @@ import Button from "@mui/material/Button";
 import SendIcon from "@mui/icons-material/Send";
 import Stack from "@mui/material/Stack";
 import { ProductsGrid } from "../Cards/ProductsGrid";
-import { products } from "../../Services/Cards/data";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const HomePage = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://localhost:8080/api/v1/products").then((response) => {
+      setProducts(response.data);
+    });
+  }, []);
   const navigate = useNavigate();
   const handleClick = () => {
     console.log("woww");
