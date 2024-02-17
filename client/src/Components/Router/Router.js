@@ -6,6 +6,7 @@ import Login from "../Pages/Login";
 import ProductsPage from "../Pages/ProductsPage";
 import { AddProducts } from "../Pages/AddProducts";
 import { SingleProductPage } from "../Pages/SingleProductPage";
+import { CartPage } from "../Pages/CartPage";
 
 //import SignInPage from "../Pages/SignInPage";
 
@@ -18,6 +19,7 @@ const Router = () => {
       <Route path={ROUTES.PRODUCTS} element={<ProductsPage />} />
       <Route path={ROUTES.CRM} element={<AddProducts />} />
       <Route path={ROUTES.SINGLE_PRODUCT} element={<SingleProductPage />} />
+      <Route path={ROUTES.CART} element={<CartPage />} />
 
       <Route path="*" element={<HomePage />} />
     </Routes>
