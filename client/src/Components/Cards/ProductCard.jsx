@@ -6,39 +6,41 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Link } from "@mui/material";
+import { MdOutlineEdit } from "react-icons/md";
 
 export default function ProductCard(props) {
   return (
-    <Link href={`/product/${props.id}`} underline="none">
-      <Card
-        sx={{
-          maxWidth: 345,
-        }}
-        key={props.id}
-      >
-        <CardMedia
-          component="img"
-          alt="jewelry"
-          height="300"
-          image={props.image}
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            {props.title}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {props.description}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {props.price}
-          </Typography>
-        </CardContent>
-        <CardActions>
+    <Card
+      sx={{
+        maxWidth: 345,
+      }}
+      key={props.id}
+    >
+      <CardMedia
+        component="img"
+        alt="jewelry"
+        height="300"
+        image={props.image}
+      />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+          {props.title}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          {props.description}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          {props.price}
+        </Typography>
+      </CardContent>
+      <CardActions style={{ justifyContent: "space-between" }}>
+        <Link href={`/product/${props.id}`} underline="none">
           <Button size="small" color="warning">
             SHOP NOW
           </Button>
-        </CardActions>
-      </Card>
-    </Link>
+        </Link>
+        <MdOutlineEdit style={{ cursor: "pointer" }} />
+      </CardActions>
+    </Card>
   );
 }

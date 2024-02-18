@@ -22,7 +22,7 @@ export function AddProducts() {
       noValidate
       autoComplete="off"
     >
-      <h1>Add New Item</h1>
+      <h1>Add New Product</h1>
       <div>
         <TextField id="title" label="Title" variant="standard" />
 
