@@ -1,21 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import "../../Services/style.css";
-import {CartContext} from "../../Contexts/CartProvider";
+import { CartContext } from "../../Contexts/CartProvider";
 
 export const CartPage = () => {
-  const {cart, removeFromCart} = useContext(CartContext);
-  // const [products, setProducts] = useState(() => {
-  //   const savedProducts = localStorage.getItem("Cart");
-  //   return savedProducts ? JSON.parse(savedProducts) : productData;
-  // });
-
-  // useEffect(() => {
-  //   localStorage.setItem("Cart", JSON.stringify(products));
-  // }, [products]);
-
-  // const removeProduct = (id) => {
-  //   setProducts(products.filter((product) => product.id !== id));
-  // };
+  const { cart, removeFromCart } = useContext(CartContext);
 
   return (
     <div>
@@ -25,21 +13,21 @@ export const CartPage = () => {
           cart.map((product) => (
             <div key={product.id} className="product-item">
               <img
-                src={product.imageId}
+                src={product.image?.url}
                 alt={product.name}
                 className="product-image"
               />
               <div className="product-info">
-                <div className="product-name">{product.name}</div>
+                <div className="product-name">{product.title}</div>
                 <div className="product-description">{product.description}</div>
                 <p>{product.price}</p>
               </div>
-              {/*<button*/}
-              {/*  onClick={() => removeProduct(product.id)}*/}
-              {/*  style={{ marginTop: "10px" }}*/}
-              {/*>*/}
-              {/*  Remove*/}
-              {/*</button>*/}
+              <button
+                onClick={() => removeFromCart(product._id)}
+                style={{ marginTop: "10px" }}
+              >
+                Remove
+              </button>
             </div>
           ))
         ) : (

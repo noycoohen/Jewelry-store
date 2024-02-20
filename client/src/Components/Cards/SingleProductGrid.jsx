@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useContext } from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -6,8 +6,11 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { MdOutlineFavorite } from "react-icons/md";
+import { CartContext } from "../../Contexts/CartProvider";
 
 export function SingleProductGrid({ product }) {
+  const { addToCart } = useContext(CartContext);
+
   return (
     <>
       <Card
@@ -37,7 +40,11 @@ export function SingleProductGrid({ product }) {
         </CardContent>
         <CardActions>
           <MdOutlineFavorite />
-          <Button size="small" color="warning">
+          <Button
+            onClick={() => addToCart(product)}
+            size="small"
+            color="warning"
+          >
             ADD TO CART
           </Button>
         </CardActions>
