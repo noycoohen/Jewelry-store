@@ -1,27 +1,28 @@
 import React, { useContext, useEffect, useState } from "react";
-import { CartProductsContext } from "../../App";
 import "../../Services/style.css";
+import {CartContext} from "../../Contexts/CartProvider";
 
 export const CartPage = () => {
-  const productData = useContext(CartProductsContext);
-  const [products, setProducts] = useState(() => {
-    const savedProducts = localStorage.getItem("Cart");
-    return savedProducts ? JSON.parse(savedProducts) : productData;
-  });
+  const {cart, removeFromCart} = useContext(CartContext);
+  // const [products, setProducts] = useState(() => {
+  //   const savedProducts = localStorage.getItem("Cart");
+  //   return savedProducts ? JSON.parse(savedProducts) : productData;
+  // });
 
-  useEffect(() => {
-    localStorage.setItem("Cart", JSON.stringify(products));
-  }, [products]);
+  // useEffect(() => {
+  //   localStorage.setItem("Cart", JSON.stringify(products));
+  // }, [products]);
 
-  const removeProduct = (id) => {
-    setProducts(products.filter((product) => product.id !== id));
-  };
+  // const removeProduct = (id) => {
+  //   setProducts(products.filter((product) => product.id !== id));
+  // };
+
   return (
     <div>
       <h1>Shopping Cart</h1>
       <div className="cart-container">
-        {products.length > 0 ? (
-          products.map((product) => (
+        {cart.length > 0 ? (
+          cart.map((product) => (
             <div key={product.id} className="product-item">
               <img
                 src={product.imageId}
@@ -33,12 +34,12 @@ export const CartPage = () => {
                 <div className="product-description">{product.description}</div>
                 <p>{product.price}</p>
               </div>
-              <button
-                onClick={() => removeProduct(product.id)}
-                style={{ marginTop: "10px" }}
-              >
-                Remove
-              </button>
+              {/*<button*/}
+              {/*  onClick={() => removeProduct(product.id)}*/}
+              {/*  style={{ marginTop: "10px" }}*/}
+              {/*>*/}
+              {/*  Remove*/}
+              {/*</button>*/}
             </div>
           ))
         ) : (

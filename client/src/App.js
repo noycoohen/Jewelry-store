@@ -4,9 +4,7 @@ import "./App.css";
 import Navbar from "./Components/Menu/Navbar";
 import Footer from "./Components/Pages/Footer";
 import RouterH from "./Components/Router/Router";
-import { products } from "./Services/Context/productsDats";
-
-export const CartProductsContext = React.createContext(products);
+import {CartProvider} from "./Contexts/CartProvider";
 
 function App() {
   useEffect(() => {
@@ -15,11 +13,11 @@ function App() {
   const userType = "admin";
   return (
     <>
-      <CartProductsContext.Provider value={products}>
+      <CartProvider>
         <Navbar userType={userType} />
         <RouterH />
         <Footer />
-      </CartProductsContext.Provider>
+      </CartProvider>
     </>
   );
 }
