@@ -7,12 +7,16 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { MdOutlineFavorite } from "react-icons/md";
 import { CartContext } from "../../Contexts/CartProvider";
+import { Container } from "@mui/material";
 
 export function SingleProductGrid({ product }) {
   const { addToCart } = useContext(CartContext);
 
   return (
-    <>
+    <Container
+      maxWidth="lg"
+      sx={{ textAlign: "center", mt: "3rem", minHeight: "700px" }}
+    >
       <Card
         sx={{
           maxWidth: 345,
@@ -49,6 +53,6 @@ export function SingleProductGrid({ product }) {
           </Button>
         </CardActions>
       </Card>
-    </>
+    </Container>
   );
 }
