@@ -2,11 +2,17 @@ import React from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { Container } from "@mui/material";
+import { useForm } from "react-hook-form";
 
 export function AddProducts() {
-  const onSubmit = (formData) => {
-    console.log(formData);
-  };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  console.log(errors);
+
   return (
     <Container
       maxWidth="lg"
@@ -14,6 +20,9 @@ export function AddProducts() {
     >
       <Box
         component="form"
+        onSubmit={handleSubmit((data) => {
+          console.log(data);
+        })}
         display="flex"
         flexDirection={"column"}
         maxWidth={400}
@@ -31,30 +40,42 @@ export function AddProducts() {
         autoComplete="off"
       >
         <h1>Add New Product</h1>
-        <form onSubmit={onSubmit}>
-          <TextField name="title" label="Title" variant="standard" />
+        <TextField
+          {...register("title", {
+            required: "This is required",
+            minLength: {
+              value: 4,
+              message: "Min length is 4",
+            },
+          })}
+          label="Title"
+          variant="standard"
+        />
+        {errors.title?.message}
 
-          <TextField
-            name="price"
-            label="Price"
-            type="number"
-            variant="standard"
-          />
-          <TextField
-            name="description"
-            label="Description"
-            type="text"
-            variant="standard"
-          />
-          <TextField
-            name="image"
-            label="Image"
-            type="text"
-            variant="standard"
-          />
+        <TextField
+          {...register("price", { required: "This is required" })}
+          label="Price"
+          type="number"
+          variant="standard"
+        />
+        {errors.price?.message}
+        <TextField
+          {...register("description", { required: "This is required" })}
+          label="Description"
+          type="text"
+          variant="standard"
+        />
+        {errors.description?.message}
+        <TextField
+          {...register("image", { required: "This is required" })}
+          label="Image"
+          type="text"
+          variant="standard"
+        />
+        {errors.image?.message}
 
-          <button type="submit">Add product</button>
-        </form>
+        <button type="submit">Add product</button>
       </Box>
     </Container>
   );
