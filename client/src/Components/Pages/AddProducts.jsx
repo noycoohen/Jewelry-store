@@ -14,8 +14,8 @@ export function AddProducts() {
 
   //console.log(errors);
   const onSubmit = async (data) => {
-    const token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkFkbWluQGV4YW1wbGUuY29tIiwiaWQiOiI2NWQ3ODU4MWIzZmMxZTc5MjNhMTcxOTkiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE3MDg2MjM0MTl9.O778M7s0DMqU8RGiB8Q7LyV9SkiIjUy5jFuiqv_Emrw";
+    const token = localStorage.getItem("token");
+    // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkFkbWluQGV4YW1wbGUuY29tIiwiaWQiOiI2NWQ3ODU4MWIzZmMxZTc5MjNhMTcxOTkiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE3MDg2MjM0MTl9.O778M7s0DMqU8RGiB8Q7LyV9SkiIjUy5jFuiqv_Emrw";
 
     try {
       const response = await axios.post(
@@ -81,6 +81,7 @@ export function AddProducts() {
             },
           })}
           label="Title"
+          type="text"
           variant="standard"
         />
         {errors.title?.message}
@@ -146,6 +147,7 @@ export function AddProducts() {
             },
           })}
           label="Alt"
+          type="text"
           variant="standard"
         />
         {errors.title?.message}
