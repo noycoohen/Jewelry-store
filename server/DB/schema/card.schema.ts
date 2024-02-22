@@ -3,7 +3,7 @@ import { ICard } from "../types/db";
 import { imageSchema } from "./image.schema";
 
 export const cardSchema = new Schema<ICard>({
-  title: { type: String, required: true, minlength: 2, maxlength: 256 },
+  title: { type: String, required: true, minlength: 2, maxlength: 50 },
   description: { type: String, required: true, minlength: 2, maxlength: 1024 },
   image: { type: imageSchema, required: true },
   price: { type: Number, required: true, minlength: 2 },

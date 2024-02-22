@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { Container } from "@mui/material";
 import { useForm } from "react-hook-form";
+import axios from "axios";
 
 export function AddProducts() {
   const {
@@ -11,8 +12,37 @@ export function AddProducts() {
     formState: { errors },
   } = useForm();
 
-  console.log(errors);
+  //console.log(errors);
+  const onSubmit = async (data) => {
+    const token =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkFkbWluQGV4YW1wbGUuY29tIiwiaWQiOiI2NWQ3ODU4MWIzZmMxZTc5MjNhMTcxOTkiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE3MDg2MjM0MTl9.O778M7s0DMqU8RGiB8Q7LyV9SkiIjUy5jFuiqv_Emrw";
 
+    try {
+      const response = await axios.post(
+        "http://localhost:8080/api/v1/products",
+        {
+          title: data.title,
+          description: data.description,
+          image: {
+            url: data.image,
+            alt: data.alt,
+          },
+          price: data.price,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      console.log(response.data);
+      alert("Product added!!");
+    } catch (error) {
+      console.error("There was an error!", error.response);
+    }
+  };
   return (
     <Container
       maxWidth="lg"
@@ -20,9 +50,7 @@ export function AddProducts() {
     >
       <Box
         component="form"
-        onSubmit={handleSubmit((data) => {
-          console.log(data);
-        })}
+        onSubmit={handleSubmit(onSubmit)}
         display="flex"
         flexDirection={"column"}
         maxWidth={400}
@@ -47,6 +75,10 @@ export function AddProducts() {
               value: 4,
               message: "Min length is 4",
             },
+            maxLength: {
+              value: 50,
+              message: "Max length is 50",
+            },
           })}
           label="Title"
           variant="standard"
@@ -54,26 +86,69 @@ export function AddProducts() {
         {errors.title?.message}
 
         <TextField
-          {...register("price", { required: "This is required" })}
+          {...register("price", {
+            required: "This is required",
+            minLength: {
+              value: 2,
+              message: "Min length is 2",
+            },
+          })}
           label="Price"
           type="number"
           variant="standard"
         />
         {errors.price?.message}
         <TextField
-          {...register("description", { required: "This is required" })}
+          {...register("description", {
+            required: "This is required",
+            minLength: {
+              value: 2,
+              message: "Min length is 2",
+            },
+            maxLength: {
+              value: 1024,
+              message: "Max length is 1024",
+            },
+          })}
           label="Description"
           type="text"
           variant="standard"
         />
         {errors.description?.message}
         <TextField
-          {...register("image", { required: "This is required" })}
+          {...register("image", {
+            required: "This is required",
+            minLength: {
+              value: 14,
+              message: "Min length is 14",
+            },
+            maxLength: {
+              value: 256,
+              message: "Max length is 256",
+            },
+          })}
           label="Image"
           type="text"
           variant="standard"
         />
         {errors.image?.message}
+
+        <TextField
+          {...register("alt", {
+            required: "This is required",
+            minLength: {
+              value: 2,
+              message: "Min length is 2",
+            },
+            maxLength: {
+              value: 256,
+              message: "Max length is 256",
+            },
+          })}
+          label="Alt"
+          variant="standard"
+        />
+        {errors.title?.message}
 
         <button type="submit">Add product</button>
       </Box>
