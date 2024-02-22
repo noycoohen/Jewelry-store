@@ -4,11 +4,13 @@ import TextField from "@mui/material/TextField";
 import { Container } from "@mui/material";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export function AddProducts() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -36,11 +38,14 @@ export function AddProducts() {
           },
         }
       );
-
-      console.log(response.data);
-      alert("Product added!!");
+      if (!token) {
+        toast.error("You are not authorized");
+      }
+      const addedProduct = await response.data;
+      toast.success(`Product "${addedProduct.title}" added successfully!`);
+      reset();
     } catch (error) {
-      console.error("There was an error!", error.response);
+      toast.error(`Failed to add product: ${error.message}`);
     }
   };
   return (
