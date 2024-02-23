@@ -30,7 +30,7 @@ export default function ProductCard(props) {
           {props.description}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {props.price}
+          {props.price + "$"}
         </Typography>
       </CardContent>
       <CardActions style={{ justifyContent: "space-between" }}>

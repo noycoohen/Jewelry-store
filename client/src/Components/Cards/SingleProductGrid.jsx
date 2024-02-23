@@ -39,7 +39,7 @@ export function SingleProductGrid({ product }) {
             {product.description}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {product.price}
+            {product.price + "$"}
           </Typography>
         </CardContent>
         <CardActions>
