@@ -67,7 +67,7 @@ const HomePage = () => {
           </Button>
         </Stack>
       </div>
-      <ProductsGrid products={products.slice(0, 6)} />
+      <ProductsGrid products={products.slice(0, 4)} />
     </div>
   );
 };
