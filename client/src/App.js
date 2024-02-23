@@ -12,7 +12,7 @@ function App() {
   useEffect(() => {
     document.title = "Jewerly Store";
   }, []);
-  const userType = "admin";
+  const userType = "guest";
   return (
     <>
       <CartProvider>

@@ -45,7 +45,11 @@ export function AddProducts() {
       toast.success(`Product "${addedProduct.title}" added successfully!`);
       reset();
     } catch (error) {
-      toast.error(`Failed to add product: ${error.message}`);
+      toast.error(
+        `Failed to add product: ${
+          error.response ? error.response.data.message : error.message
+        }`
+      );
     }
   };
   return (
