@@ -44,7 +44,7 @@ const Login = () => {
       : { email: inputs.email, password: inputs.password };
 
     try {
-      await axios.post(endpoint, data, {
+      const response = await axios.post(endpoint, data, {
         headers: { "Content-Type": "application/json" },
       });
 
@@ -52,12 +52,14 @@ const Login = () => {
         toast.success(`Welcome ${inputs.name}! Please login.`);
       } else {
         toast.success(`Login successful! Welcome back ${inputs.email}.`);
+        localStorage.setItem("token", response.data.token);
+        setInputs({ name: "", email: "", password: "" });
+
         setTimeout(() => {
           nav("/");
+          window.location.reload();
         }, 800);
       }
-
-      setInputs({ name: "", email: "", password: "" });
     } catch (error) {
       toast.error(
         `Failed to ${isSignup ? "sign up" : "login"}: ${

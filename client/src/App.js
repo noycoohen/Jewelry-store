@@ -7,12 +7,14 @@ import RouterH from "./Components/Router/Router";
 import { CartProvider } from "./Contexts/CartProvider";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { getUserInfo, getUserType } from "./Services/users/users";
 
 function App() {
   useEffect(() => {
     document.title = "Jewerly Store";
   }, []);
-  const userType = "guest";
+  console.log(getUserInfo());
+  const userType = getUserType();
   return (
     <>
       <CartProvider>

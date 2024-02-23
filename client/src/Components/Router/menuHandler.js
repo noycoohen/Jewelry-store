@@ -6,6 +6,7 @@ import { AiFillHome } from "react-icons/ai";
 import { PiCardsBold } from "react-icons/pi";
 import { MdOutlineFavorite } from "react-icons/md";
 import { GrUserAdmin } from "react-icons/gr";
+import { doSignOut } from "../../Services/users/users";
 
 const home = {
   to: ROUTES.HOME,
@@ -37,6 +38,9 @@ const signOut = {
   to: ROUTES.HOME,
   label: "Sign Out",
   icon: <PiSignInFill size={25} color={"white"} title={"Sign Out"} />,
+  onClickHandler: () => {
+    doSignOut();
+  },
 };
 const cart = {
   to: ROUTES.CART,

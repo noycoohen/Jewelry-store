@@ -9,7 +9,7 @@ const Navbar = ({ userType }) => {
     case "guest":
       menu = guestMenu;
       break;
-    case "simple":
+    case "regular":
       menu = simpleMenu;
       break;
     case "admin":
@@ -24,7 +24,7 @@ const Navbar = ({ userType }) => {
       <ul className="nav-list">
         {menu.map((item, index) => (
           <li key={index} className="nav-item">
-            <Link to={item.to}>
+            <Link to={item.to} onClick={item.onClickHandler}>
               {item.icon}
               <span>{item.label}</span>
             </Link>
