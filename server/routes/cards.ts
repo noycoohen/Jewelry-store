@@ -18,7 +18,7 @@ router.get("/", async (req, res, next) => {
 });
 
 //Get products that user add
-router.get("/my-cart", verifyToken, async (req, res, next) => {
+router.get("/favorites", verifyToken, async (req, res, next) => {
   try {
     const userId = req.user?.id;
 
@@ -36,12 +36,17 @@ router.get("/my-cart", verifyToken, async (req, res, next) => {
 router.get("/:id", async (req, res, next) => {
   try {
     const id = req.params.id;
+    const userId = req.user?.id;
 
     const card = await Card.findById(id);
     if (!card) {
       return res.status(404).json({ message: `card with id: ${id} Not found` });
     }
-    res.json(card);
+    const isLike = userId ? card.likes.includes(userId) : false;
+    console.log(userId, card.likes, isLike);
+
+    const responseCard = { ...card, like: isLike };
+    res.json(responseCard);
   } catch (e) {
     next(e);
   }

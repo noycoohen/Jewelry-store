@@ -8,6 +8,6 @@ export const joiCardSchema = Joi.object<ICardInput>({
   price: Joi.number().min(2).required(),
   image: Joi.object<IImage>({
     alt: Joi.string().min(2).max(256),
-    url: Joi.string().uri().min(14).max(256),
+    url: Joi.string().uri().min(14).max(1024),
   }),
 });

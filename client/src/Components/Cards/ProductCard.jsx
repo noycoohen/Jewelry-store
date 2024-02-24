@@ -7,8 +7,10 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Link } from "@mui/material";
 import { MdOutlineEdit } from "react-icons/md";
+import { getUserType } from "../../Services/users/users";
 
 export default function ProductCard(props) {
+  const userType = getUserType();
   return (
     <Card
       sx={{
@@ -39,7 +41,9 @@ export default function ProductCard(props) {
             SHOP NOW
           </Button>
         </Link>
-        <MdOutlineEdit style={{ cursor: "pointer" }} />
+        {userType === "admin" ? (
+          <MdOutlineEdit style={{ cursor: "pointer" }} />
+        ) : undefined}
       </CardActions>
     </Card>
   );

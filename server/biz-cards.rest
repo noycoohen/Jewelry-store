@@ -78,12 +78,13 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkFkbWluQ
 ### get all products:
 GET http://localhost:8080/api/v1/products
 
-### get my products:
-GET http://localhost:8080/api/v1/products/my-cart
+### get my fav products:
+GET http://localhost:8080/api/v1/products/favorites
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkFkbWluQGV4YW1wbGUuY29tIiwiaWQiOiI2NTdlYmI0YmMxMDU2NDdlZDhjNjBhOTYiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE3MDI4MTIyNzF9.XjmFKYicKFyGhWEIBG1zrVqhW20eZW3_7u5_yVf8HAU
 
 ### get products by id:
-GET http://localhost:8080/api/v1/products/65cd01dd835b273925080e9f
+GET http://localhost:8080/api/v1/products/65cf8338957e418393ccabd1
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5veTM0NUBnbWFpbC5jb20iLCJpZCI6IjY1ZDhhYWQzYzYwNGNhYTRiYWYyNzA3MiIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3MDg3MDM4MzR9.dEp7pLtyErtUD1eArp79KHBR5Mz9R3vdAEHjSMP9-zs
 
 
 ### post a products:
@@ -117,8 +118,8 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkFkbWluQ
 }
 
 ###like products
-PATCH http://localhost:8080/api/v1/products/65cd01dd835b273925080e9f
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5veXlAZW1haWwuY29tIiwiaWQiOiI2NWNiYTM5OWNiNGM5MWUwZTBjM2FkMjQiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNzA3OTM1MzQxfQ.4VT2dYVkofWsBQDN4cAkeW_t1T8crxOpC6HuLk0s6gU
+PATCH http://localhost:8080/api/v1/products/65cf8338957e418393ccabd1
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5veTM0NUBnbWFpbC5jb20iLCJpZCI6IjY1ZDhhYWQzYzYwNGNhYTRiYWYyNzA3MiIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3MDg3MDM4MzR9.dEp7pLtyErtUD1eArp79KHBR5Mz9R3vdAEHjSMP9-zs
 
 ### delete products:
 DELETE http://localhost:8080/api/v1/products/65cbb4bdc49c93e7501f3a06

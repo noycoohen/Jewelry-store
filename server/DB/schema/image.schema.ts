@@ -6,7 +6,7 @@ export const imageSchema = new Schema<IImage>({
     type: String,
     required: false,
     default: "https://picsum.photos/200/300",
-    maxlength: 100,
+    maxlength: 1024,
   },
   alt: {
     type: String,
