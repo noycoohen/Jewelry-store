@@ -4,6 +4,7 @@ import { verifyToken } from "../middleware/verify-token";
 import { validateCard } from "../middleware/validate-schema";
 import { User } from "../db/model/user.model";
 import { verifyAdmin } from "../middleware/verify-admin";
+import { verifyTokenNoError } from "../middleware/verify-token-noerror";
 
 const router = Router();
 
@@ -33,7 +34,7 @@ router.get("/favorites", verifyToken, async (req, res, next) => {
 });
 
 //Get product by id
-router.get("/:id", async (req, res, next) => {
+router.get("/:id", verifyTokenNoError, async (req, res, next) => {
   try {
     const id = req.params.id;
     const userId = req.user?.id;
@@ -42,11 +43,15 @@ router.get("/:id", async (req, res, next) => {
     if (!card) {
       return res.status(404).json({ message: `card with id: ${id} Not found` });
     }
-    const isLike = userId ? card.likes.includes(userId) : false;
-    console.log(userId, card.likes, isLike);
 
-    const responseCard = { ...card, like: isLike };
-    res.json(responseCard);
+    const cardObj = card.toObject();
+
+    cardObj.like = userId && card.likes ? card.likes.includes(userId) : false;
+    console.log(userId);
+
+    delete cardObj.likes;
+
+    res.json(cardObj);
   } catch (e) {
     next(e);
   }
@@ -108,7 +113,7 @@ router.patch("/:id", verifyToken, async (req, res, next) => {
     }
 
     const card = await Card.findById(cardId);
-    if (card && user) {
+    if (card && user && card.likes) {
       const index = card.likes.indexOf(user.id);
       if (index != -1) {
         card.likes.splice(index, 1);

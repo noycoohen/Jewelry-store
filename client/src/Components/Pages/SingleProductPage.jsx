@@ -8,9 +8,15 @@ export const SingleProductPage = () => {
 
   const [product, setProduct] = useState({});
 
+  const token = localStorage.getItem("token");
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/api/v1/products/${params.productId}`)
+      .get(`http://localhost:8080/api/v1/products/${params.productId}`, {
+          headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+          },
+      })
       .then((response) => {
         setProduct(response.data);
       });
