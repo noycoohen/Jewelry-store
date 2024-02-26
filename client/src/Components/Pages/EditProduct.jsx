@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { Container } from "@mui/material";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useParams } from "react-router-dom";
 
-export function AddProducts() {
+export function EditProduct() {
+  const params = useParams();
   const {
     register,
     handleSubmit,
@@ -14,13 +16,26 @@ export function AddProducts() {
     formState: { errors },
   } = useForm();
 
-  //console.log(errors);
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8080/api/v1/products/${params.productId}`)
+      .then((res) => {
+        reset({
+          title: res.data.title,
+          price: res.data.price,
+          description: res.data.description,
+          image: res.data.image.url,
+          alt: res.data.image.alt,
+        });
+      });
+  }, [params.productId, reset]);
+
   const onSubmit = async (data) => {
     const token = localStorage.getItem("token");
 
     try {
-      const response = await axios.post(
-        "http://localhost:8080/api/v1/products",
+      const response = await axios.put(
+        `http://localhost:8080/api/v1/products/${params.productId}`,
         {
           title: data.title,
           description: data.description,
@@ -41,16 +56,16 @@ export function AddProducts() {
         toast.error("You are not authorized");
       }
       const addedProduct = await response.data;
-      toast.success(`Product "${addedProduct.title}" added successfully!`);
-      reset();
+      toast.success(`Product "${addedProduct.title}" Updated successfully!`);
     } catch (error) {
       toast.error(
-        `Failed to add product: ${
+        `Failed to update product: ${
           error.response ? error.response.data.message : error.message
         }`
       );
     }
   };
+
   return (
     <Container
       maxWidth="lg"
@@ -75,7 +90,7 @@ export function AddProducts() {
         noValidate
         autoComplete="off"
       >
-        <h1>Add New Product</h1>
+        <h1>Edit Product</h1>
         <TextField
           {...register("title", {
             required: "This is required",
@@ -91,6 +106,9 @@ export function AddProducts() {
           label="Title"
           type="text"
           variant="standard"
+          InputLabelProps={{
+            shrink: true,
+          }}
         />
         {errors.title?.message}
 
@@ -105,6 +123,9 @@ export function AddProducts() {
           label="Price"
           type="number"
           variant="standard"
+          InputLabelProps={{
+            shrink: true,
+          }}
         />
         {errors.price?.message}
         <TextField
@@ -122,6 +143,9 @@ export function AddProducts() {
           label="Description"
           type="text"
           variant="standard"
+          InputLabelProps={{
+            shrink: true,
+          }}
         />
         {errors.description?.message}
         <TextField
@@ -139,6 +163,9 @@ export function AddProducts() {
           label="Image"
           type="text"
           variant="standard"
+          InputLabelProps={{
+            shrink: true,
+          }}
         />
         {errors.image?.message}
 
@@ -157,10 +184,13 @@ export function AddProducts() {
           label="Alt"
           type="text"
           variant="standard"
+          InputLabelProps={{
+            shrink: true,
+          }}
         />
         {errors.title?.message}
 
-        <button type="submit">Add product</button>
+        <button type="submit">Update product</button>
       </Box>
     </Container>
   );

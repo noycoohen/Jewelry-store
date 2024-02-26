@@ -10,11 +10,15 @@ export const verifyTokenNoError: RequestHandler = (req, res, next) => {
   // if auth header does not exist - exit
   if (!header) {
     next();
+    return;
   }
 
   //get the token from the header (after the space)
-  const token = header.split(" ")[1];
-
+  const token = header?.split(" ")[1];
+  if (!token) {
+    next();
+    return;
+  }
   const secret = process.env.JWT_SECRET ?? "";
 
   try {

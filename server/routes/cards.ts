@@ -47,7 +47,6 @@ router.get("/:id", verifyTokenNoError, async (req, res, next) => {
     const cardObj = card.toObject();
 
     cardObj.like = userId && card.likes ? card.likes.includes(userId) : false;
-    console.log(userId);
 
     delete cardObj.likes;
 

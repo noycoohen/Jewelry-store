@@ -12,15 +12,15 @@ export const SingleProductPage = () => {
   useEffect(() => {
     axios
       .get(`http://localhost:8080/api/v1/products/${params.productId}`, {
-          headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-          },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
       })
       .then((response) => {
         setProduct(response.data);
       });
-  }, [params.productId]);
+  }, [params.productId, token]);
 
   return (
     <>

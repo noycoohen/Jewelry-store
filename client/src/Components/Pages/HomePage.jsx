@@ -6,6 +6,7 @@ import { ProductsGrid } from "../Cards/ProductsGrid";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import ROUTES from "../Router/RouterModel";
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
@@ -17,8 +18,7 @@ const HomePage = () => {
   }, []);
   const navigate = useNavigate();
   const handleClick = () => {
-    console.log("woww");
-    navigate("/cards");
+    navigate(ROUTES.PRODUCTS);
   };
 
   return (

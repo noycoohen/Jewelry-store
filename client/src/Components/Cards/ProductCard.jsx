@@ -8,8 +8,13 @@ import { Link } from "@mui/material";
 import { MdOutlineEdit } from "react-icons/md";
 import { getUserType } from "../../Services/users/users";
 import { GoTrash } from "react-icons/go";
+import { useNavigate } from "react-router-dom";
 
 export default function ProductCard(props) {
+  const nav = useNavigate();
+  const handleEdit = () => {
+    nav(`/crm/edit/${props.id}`);
+  };
   const userType = getUserType();
 
   return (
@@ -44,7 +49,10 @@ export default function ProductCard(props) {
         </Link>
         {userType === "admin" ? (
           <div>
-            <MdOutlineEdit style={{ cursor: "pointer", marginRight: "10px" }} />
+            <MdOutlineEdit
+              style={{ cursor: "pointer", marginRight: "10px" }}
+              onClick={handleEdit}
+            />
             <GoTrash
               style={{ cursor: "pointer" }}
               onClick={() => {
