@@ -5,6 +5,7 @@ import { validateCard } from "../middleware/validate-schema";
 import { User } from "../db/model/user.model";
 import { verifyAdmin } from "../middleware/verify-admin";
 import { verifyTokenNoError } from "../middleware/verify-token-noerror";
+import { log } from "console";
 
 const router = Router();
 
@@ -23,9 +24,9 @@ router.get("/favorites", verifyToken, async (req, res, next) => {
   try {
     const userId = req.user?.id;
 
-    const cards = await Card.find({ user_id: userId });
+    const cards = await Card.find({ likes: userId });
     if (cards.length === 0) {
-      return res.status(404).json({ message: `Cards not found` });
+      return res.status(200).json([]);
     }
     res.json(cards);
   } catch (e) {

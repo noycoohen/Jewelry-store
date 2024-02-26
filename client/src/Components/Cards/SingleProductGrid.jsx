@@ -8,10 +8,24 @@ import Typography from "@mui/material/Typography";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { CartContext } from "../../Contexts/CartProvider";
 import { Container } from "@mui/material";
+import axios from "axios";
 
 export function SingleProductGrid({ product }) {
   const { addToCart } = useContext(CartContext);
+  const token = localStorage.getItem("token");
 
+  const doLike = () => {
+    axios.patch(
+      `http://localhost:8080/api/v1/products/${product._id}`,
+      {},
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+  };
   return (
     <Container
       maxWidth="lg"
@@ -21,7 +35,7 @@ export function SingleProductGrid({ product }) {
         sx={{
           maxWidth: 345,
         }}
-        key={product.id}
+        key={product._id}
       >
         {
           <CardMedia
@@ -43,7 +57,7 @@ export function SingleProductGrid({ product }) {
           </Typography>
         </CardContent>
         <CardActions>
-          <IoIosHeartEmpty />
+          <IoIosHeartEmpty onClick={doLike} />
 
           <Button
             onClick={() => addToCart(product)}
