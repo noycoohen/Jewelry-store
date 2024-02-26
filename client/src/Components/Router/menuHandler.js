@@ -4,7 +4,8 @@ import { RiShoppingBagLine } from "react-icons/ri";
 import { PiSignInFill } from "react-icons/pi";
 import { AiFillHome } from "react-icons/ai";
 import { PiCardsBold } from "react-icons/pi";
-import { MdOutlineFavorite } from "react-icons/md";
+import { IoIosHeartEmpty } from "react-icons/io";
+
 import { GrUserAdmin } from "react-icons/gr";
 import { doSignOut } from "../../Services/users/users";
 
@@ -44,15 +45,13 @@ const signOut = {
 };
 const cart = {
   to: ROUTES.CART,
-  label: "Cart",
+  label: "",
   icon: <RiShoppingBagLine size={25} color={"white"} title={"My Cards"} />,
 };
 const favProducts = {
   to: ROUTES.FAVPRODUCTS,
-  label: "Favorite Products",
-  icon: (
-    <MdOutlineFavorite size={25} color={"white"} title={"Favorite Cards"} />
-  ),
+  label: "",
+  icon: <IoIosHeartEmpty size={25} color={"white"} title={"Favorite Cards"} />,
 };
 const crm = {
   to: ROUTES.CRM,
@@ -64,9 +63,9 @@ export const guestMenu = [home, cart, products, about, signIn];
 export const simpleMenu = [home, cart, favProducts, products, about, signOut];
 export const adminMenu = [
   home,
-  products,
   cart,
   favProducts,
+  products,
   about,
   signOut,
   crm,

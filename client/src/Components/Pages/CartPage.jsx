@@ -27,7 +27,7 @@ export const CartPage = () => {
                   <div className="product-description">
                     {product.description}
                   </div>
-                  <p>{product.price}</p>
+                  <p>{product.price + "$"}</p>
                 </div>
                 <button
                   onClick={() => removeFromCart(product._id)}

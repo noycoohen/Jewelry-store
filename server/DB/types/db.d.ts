@@ -22,9 +22,10 @@ export type ICardInput = {
 };
 
 export type ICard = ICardInput & {
-  likes: string[];
+  likes?: string[];
   user_id: mongoose.Types.ObjectId;
   createdAt: Date;
+  like: boolean;
 };
 
 export type ILogin = {

@@ -1,4 +1,3 @@
-import * as React from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -8,9 +7,11 @@ import Typography from "@mui/material/Typography";
 import { Link } from "@mui/material";
 import { MdOutlineEdit } from "react-icons/md";
 import { getUserType } from "../../Services/users/users";
+import { GoTrash } from "react-icons/go";
 
 export default function ProductCard(props) {
   const userType = getUserType();
+
   return (
     <Card
       sx={{
@@ -42,7 +43,15 @@ export default function ProductCard(props) {
           </Button>
         </Link>
         {userType === "admin" ? (
-          <MdOutlineEdit style={{ cursor: "pointer" }} />
+          <div>
+            <MdOutlineEdit style={{ cursor: "pointer", marginRight: "10px" }} />
+            <GoTrash
+              style={{ cursor: "pointer" }}
+              onClick={() => {
+                props.onDelete(props.id);
+              }}
+            />
+          </div>
         ) : undefined}
       </CardActions>
     </Card>

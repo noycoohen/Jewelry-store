@@ -2,7 +2,7 @@ import React from "react";
 import ProductCard from "./ProductCard";
 import { Grid } from "@mui/material";
 
-export const ProductsGrid = ({ products }) => {
+export const ProductsGrid = ({ products, onDelete }) => {
   return (
     <Grid
       container
@@ -20,6 +20,7 @@ export const ProductsGrid = ({ products }) => {
             title={product.title}
             description={product.description}
             price={product.price}
+            onDelete={onDelete}
           />
         </Grid>
       ))}

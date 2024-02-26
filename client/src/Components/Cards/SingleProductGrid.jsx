@@ -5,7 +5,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { MdOutlineFavorite } from "react-icons/md";
+import { IoIosHeartEmpty } from "react-icons/io";
 import { CartContext } from "../../Contexts/CartProvider";
 import { Container } from "@mui/material";
 
@@ -43,7 +43,8 @@ export function SingleProductGrid({ product }) {
           </Typography>
         </CardContent>
         <CardActions>
-          <MdOutlineFavorite />
+          <IoIosHeartEmpty />
+
           <Button
             onClick={() => addToCart(product)}
             size="small"
