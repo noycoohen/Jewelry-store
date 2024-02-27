@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import "../../Services/style.css";
+import "../../Services/style/cart.css";
 import { CartContext } from "../../Contexts/CartProvider";
 import { Container } from "@mui/material";
 
