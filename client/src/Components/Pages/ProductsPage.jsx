@@ -22,7 +22,7 @@ const ProductsPage = () => {
 
         setProducts(newProducts);
 
-        filteredProducts(searchTerm, newProducts);
+        filterProducts(searchTerm, newProducts);
       });
   };
 

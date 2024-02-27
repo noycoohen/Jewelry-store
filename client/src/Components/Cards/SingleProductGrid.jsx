@@ -1,30 +1,55 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { IoIosHeartEmpty } from "react-icons/io";
+import { IoIosHeartEmpty, IoIosHeart } from "react-icons/io";
 import { CartContext } from "../../Contexts/CartProvider";
 import { Container } from "@mui/material";
 import axios from "axios";
+import { toast } from "react-toastify";
+import { getUserInfo } from "../../Services/users/users";
 
 export function SingleProductGrid({ product }) {
   const { addToCart } = useContext(CartContext);
   const token = localStorage.getItem("token");
 
-  const doLike = () => {
-    axios.patch(
-      `http://localhost:8080/api/v1/products/${product._id}`,
-      {},
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+  const decoded = getUserInfo(token);
+  const userId = decoded.id;
+
+  const [isFavorited, setIsFavorited] = useState(
+    product.likes?.includes(userId)
+  );
+  useEffect(() => {
+    setIsFavorited(product.likes?.includes(userId));
+  }, [product, userId]);
+
+  const toggleFavorite = () => {
+    axios
+      .patch(
+        `http://localhost:8080/api/v1/products/${product._id}`,
+        {},
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response.data);
+        setIsFavorited(response.data.likes.includes(userId));
+        toast.success(
+          isFavorited
+            ? "Removed from your favorites"
+            : "Added to your favorites"
+        );
+      })
+      .catch((error) => {
+        console.error("Failed to update favorite status", error);
+      });
   };
   return (
     <Container
@@ -57,7 +82,17 @@ export function SingleProductGrid({ product }) {
           </Typography>
         </CardContent>
         <CardActions>
-          <IoIosHeartEmpty onClick={doLike} />
+          {isFavorited ? (
+            <IoIosHeart
+              onClick={toggleFavorite}
+              style={{ color: "red", cursor: "pointer" }}
+            />
+          ) : (
+            <IoIosHeartEmpty
+              onClick={toggleFavorite}
+              style={{ cursor: "pointer" }}
+            />
+          )}
 
           <Button
             onClick={() => addToCart(product)}

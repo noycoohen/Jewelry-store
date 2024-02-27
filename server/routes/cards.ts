@@ -84,6 +84,7 @@ router.put("/:id", verifyAdmin, validateCard, async (req, res, next) => {
     }
     console.log(existingCard.user_id);
     console.log(userId);
+    //console.log(card);
 
     const updatedCard = await Card.findByIdAndUpdate(cardId, card, {
       new: true,
