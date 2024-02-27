@@ -6,6 +6,10 @@ import { Container } from "@mui/material";
 export const CartPage = () => {
   const { cart, removeFromCart } = useContext(CartContext);
 
+  const calculateTotalPrice = () => {
+    return cart.reduce((total, product) => total + product.price, 0).toFixed(2);
+  };
+
   return (
     <Container
       maxWidth="lg"
@@ -41,7 +45,7 @@ export const CartPage = () => {
             <div className="emptyCart-message">Cart is empty</div>
           )}
         </div>
-        <p>Total Price:</p>
+        <p>Total Price:{calculateTotalPrice()}$</p>
       </div>
     </Container>
   );
