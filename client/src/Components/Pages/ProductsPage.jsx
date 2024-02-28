@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ProductsGrid } from "../Cards/ProductsGrid";
 import axios from "axios";
+import "../../Services/style/productPage.css";
 
 const ProductsPage = () => {
   const [products, setProducts] = useState([]);
@@ -48,8 +49,13 @@ const ProductsPage = () => {
     });
   }, []);
   return (
-    <>
-      <h1>JEWERLY</h1>
+    <div className="container">
+      <h1>Shop Fashion Diamond Jewelry Styles</h1>
+      <h3>
+        From diamond rings to diamond necklaces, diamond bracelets, diamond
+        earrings, and more, diamond gemstones are a classic way to make a style
+        impact.
+      </h3>
       <div>
         <input
           type="text"
@@ -62,7 +68,7 @@ const ProductsPage = () => {
         )}
       </div>
       <ProductsGrid products={filteredProducts} onDelete={handleDelete} />
-    </>
+    </div>
   );
 };
 
