@@ -8,7 +8,6 @@ import { CartProvider } from "./Contexts/CartProvider";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { getUserInfo, getUserType } from "./Services/users/users";
-import { GalleryCarousel } from "./Components/Pages/GalleryCarousel";
 
 function App() {
   useEffect(() => {
@@ -22,7 +21,7 @@ function App() {
         <ToastContainer />
         <Navbar userType={userType} />
         <RouterH />
-        <GalleryCarousel />
+
         <Footer />
       </CartProvider>
     </>

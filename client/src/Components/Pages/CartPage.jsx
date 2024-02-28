@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import "../../Services/style/cart.css";
 import { CartContext } from "../../Contexts/CartProvider";
 import { Container } from "@mui/material";
+import "../../Services/style/homePage.css";
 
 export const CartPage = () => {
   const { cart, removeFromCart } = useContext(CartContext);
@@ -20,7 +21,7 @@ export const CartPage = () => {
         <div className="cart-container">
           {cart.length > 0 ? (
             cart.map((product) => (
-              <div key={product.id} className="product-item">
+              <div key={product._id} className="product-item">
                 <img
                   src={product.image?.url}
                   alt={product.name}
@@ -35,7 +36,7 @@ export const CartPage = () => {
                 </div>
                 <button
                   onClick={() => removeFromCart(product._id)}
-                  style={{ marginTop: "10px" }}
+                  className="shop-button"
                 >
                   Remove
                 </button>

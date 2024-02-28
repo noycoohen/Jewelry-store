@@ -21,6 +21,7 @@ export const CartProvider = ({ children }) => {
   const removeFromCart = (id) => {
     const newCart = cart.filter((item) => item._id !== id);
     setCart(newCart);
+    toast.success("Removed from cart");
   };
 
   return (

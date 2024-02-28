@@ -10,21 +10,16 @@ import { CartContext } from "../../Contexts/CartProvider";
 import { Container } from "@mui/material";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { getUserInfo } from "../../Services/users/users";
 
 export function SingleProductGrid({ product }) {
   const { addToCart } = useContext(CartContext);
   const token = localStorage.getItem("token");
 
-  const decoded = getUserInfo(token);
-  const userId = decoded.id;
+  const [isFavorited, setIsFavorited] = useState(product.like);
 
-  const [isFavorited, setIsFavorited] = useState(
-    product.likes?.includes(userId)
-  );
   useEffect(() => {
-    setIsFavorited(product.likes?.includes(userId));
-  }, [product, userId]);
+    setIsFavorited(product.like);
+  }, [product.like]);
 
   const toggleFavorite = () => {
     axios
@@ -39,8 +34,7 @@ export function SingleProductGrid({ product }) {
         }
       )
       .then((response) => {
-        console.log(response.data);
-        setIsFavorited(response.data.likes.includes(userId));
+        setIsFavorited(!isFavorited);
         toast.success(
           isFavorited
             ? "Removed from your favorites"

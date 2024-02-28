@@ -24,13 +24,10 @@ const AboutPage = () => {
         <h1>ABOUT US</h1>
         <Grid>
           <Typography fontSize={"28px"}>
-            She-ra jewelry is an all women, for women jewelry boutique. A home
-            for dainty gold jewelry, that intertwine with each other and leave
-            taste for more – designed by the designer Shira Gabay. Our style is
-            a clean, simple nostalgic line with a hint of vintage. All this
-            magic is crafted by hand in a workshop within Neve Tzedek, in small
-            quantities, with great care for a high level of finish, and
-            attention to every detail.
+            This is a jewelry internet parking application, there are user
+            types: a guest can know how many products and add to the cart, a
+            registered user can also like favorite products, an admin user who
+            is the store owner can add, delete and update products
           </Typography>
         </Grid>
         <ImageList
