@@ -49,7 +49,7 @@ const ProductsPage = () => {
     });
   }, []);
   return (
-    <div className="container">
+    <div className="container-product">
       <h1>Shop Fashion Diamond Jewelry Styles</h1>
       <h3>
         From diamond rings to diamond necklaces, diamond bracelets, diamond
