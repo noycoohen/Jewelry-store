@@ -12,9 +12,8 @@ export const ProductsGrid = ({ products, onDelete }) => {
       marginBottom={40}
     >
       {products.map((product) => (
-        <Grid item sx={3}>
+        <Grid key={product._id} item sx={3}>
           <ProductCard
-            key={product._id}
             id={product._id}
             image={product.image?.url}
             title={product.title}
