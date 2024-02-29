@@ -3,7 +3,6 @@ export type RequestUser = {
   id: string;
   email: string;
   isAdmin: boolean;
-  //isLike: boolean;
 };
 
 //ammend express - add RequestUser to Request

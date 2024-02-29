@@ -19,18 +19,36 @@ const Navbar = ({ userType }) => {
       menu = guestMenu; // Default to guest menu
   }
 
+  const leftItems = menu.filter((item) => item.label === "");
+  const rightItems = menu.filter((item) => item.label !== "");
+
   return (
     <nav className="navbar">
-      <ul className="nav-list">
-        {menu.map((item, index) => (
-          <li key={index} className="nav-item">
-            <Link to={item.to} onClick={item.onClickHandler}>
-              {item.icon}
-              <span>{item.label}</span>
-            </Link>
-          </li>
+      <div className="nav-group left">
+        {leftItems.map((item, index) => (
+          <Link
+            key={index}
+            to={item.to}
+            onClick={item.onClickHandler}
+            className="nav-link"
+          >
+            {item.icon}
+          </Link>
         ))}
-      </ul>
+      </div>
+      <div className="nav-group right">
+        {rightItems.map((item, index) => (
+          <Link
+            key={index}
+            to={item.to}
+            onClick={item.onClickHandler}
+            className="nav-link"
+          >
+            {item.icon}
+            <span>{item.label}</span>
+          </Link>
+        ))}
+      </div>
     </nav>
   );
 };

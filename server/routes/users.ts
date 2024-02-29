@@ -1,11 +1,7 @@
 import { Router } from "express";
 import { User } from "../db/model/user.model";
 import { ILogin, IUser } from "../db/types/db";
-import {
-  validateLogin,
-  validateUser,
-  validateUserUpdate,
-} from "../middleware/validate-schema";
+import { validateLogin, validateUser } from "../middleware/validate-schema";
 import { verifyAdmin } from "../middleware/verify-admin";
 import { userService } from "../service/user.service";
 import { verifyUserOrAdmin } from "../middleware/verify-user-or-admin";

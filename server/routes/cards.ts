@@ -5,7 +5,6 @@ import { validateCard } from "../middleware/validate-schema";
 import { User } from "../db/model/user.model";
 import { verifyAdmin } from "../middleware/verify-admin";
 import { verifyTokenNoError } from "../middleware/verify-token-noerror";
-import { log } from "console";
 
 const router = Router();
 
@@ -82,9 +81,6 @@ router.put("/:id", verifyAdmin, validateCard, async (req, res, next) => {
         .status(404)
         .json({ message: `Card with id: ${cardId} not found` });
     }
-    console.log(existingCard.user_id);
-    console.log(userId);
-    //console.log(card);
 
     const updatedCard = await Card.findByIdAndUpdate(cardId, card, {
       new: true,

@@ -1,7 +1,6 @@
 import { Schema } from "mongoose";
 import { IUser } from "../types/db";
 
-
 export const userSchema = new Schema<IUser>({
   name: {
     type: String,
@@ -27,5 +26,3 @@ export const userSchema = new Schema<IUser>({
     default: false,
   },
 });
-
-//IUser{isAdmin?: boolean}

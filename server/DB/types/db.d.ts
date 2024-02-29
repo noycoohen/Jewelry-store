@@ -32,7 +32,3 @@ export type ILogin = {
   email: string;
   password: string;
 };
-
-// export type IUserUpdate = {
-//   isBusiness: boolean;
-// };

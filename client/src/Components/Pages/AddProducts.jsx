@@ -14,7 +14,6 @@ export function AddProducts() {
     formState: { errors },
   } = useForm();
 
-  //console.log(errors);
   const onSubmit = async (data) => {
     const token = localStorage.getItem("token");
 

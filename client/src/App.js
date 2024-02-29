@@ -7,18 +7,18 @@ import RouterH from "./Components/Router/Router";
 import { CartProvider } from "./Contexts/CartProvider";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { getUserInfo, getUserType } from "./Services/users/users";
+import { getUserType } from "./Services/users/users";
 
 function App() {
   useEffect(() => {
     document.title = "Jewerly Store";
   }, []);
-  console.log(getUserInfo());
+  //console.log(getUserInfo());
   const userType = getUserType();
   return (
     <>
       <CartProvider>
-        <ToastContainer />
+        <ToastContainer className="toast-container-bottom-right" limit={3} />
         <Navbar userType={userType} />
         <RouterH />
 

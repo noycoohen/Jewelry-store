@@ -7,19 +7,19 @@ export const initDatabase = async () => {
   try {
     const usersData = [
       {
-        name: "admin",
+        name: "Admin",
         email: "admin@example.com",
         password: "Ab1234Ab!",
         isAdmin: true,
       },
       {
-        name: "noy",
-        email: "Regularr@example.com",
+        name: "Regular",
+        email: "Regular@example.com",
         password: "Ab1234Ab!",
       },
       {
         name: "noy",
-        email: "Regular@example.com",
+        email: "noy@example.com",
         password: "Ab1234Ab!",
       },
     ];

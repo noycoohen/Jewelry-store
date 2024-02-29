@@ -24,7 +24,7 @@ const Login = () => {
   const nav = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(inputs);
+    //console.log(inputs);
 
     const passwordPattern =
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/;
