@@ -26,7 +26,7 @@ export const initDatabase = async () => {
 
     const cardData = [
       {
-        title: "RINGS",
+        title: "Ring Set",
         description:
           "Experienced software engineer with a passion for developing innovative programs that expedite the efficiency and effectiveness of organizational success.",
         price: 9990,
@@ -36,7 +36,7 @@ export const initDatabase = async () => {
         },
       },
       {
-        title: "NECKLACES",
+        title: "Set of necklaces",
         description:
           "Experienced software engineer with a passion for developing innovative programs that expedite the efficiency and effectiveness of organizational success.",
         price: 300,
@@ -46,7 +46,7 @@ export const initDatabase = async () => {
         },
       },
       {
-        title: "EARRINGS",
+        title: "Earring set",
         description:
           "Experienced software engineer with a passion for developing innovative programs that expedite the efficiency and effectiveness of organizational success.",
         price: 2260,
@@ -97,27 +97,27 @@ export const initDatabase = async () => {
       {
         title: "Diamond Necklace",
         description:
-          "Mesmerising in its elegant and delicate design, this Classic Graff platinum and white gold necklace features an enchanting array of emerald cut and round diamonds. The diamonds are embraced in minimal metal settings, creating a delicately scintillating statement.",
-        price: 5590,
+          "Illusion set four claw tennis necklace with tapering round brilliant cut diamonds set across the front of the necklace. Please note diamond carat weights are approximate. ",
+        price: 990,
         image: {
           url: "https://www.graff.com/dw/image/v2/BFNT_PRD/on/demandware.static/-/Sites-master-catalog/default/dw36a31bfc/RGN469_RGN469_GN8550_Hero_1.jpg?sw=800&sh=800",
           alt: "necklace",
         },
       },
       {
-        title: "Diamond Necklace",
+        title: "Gold Earrings",
         description:
-          "Mesmerising in its elegant and delicate design, this Classic Graff platinum and white gold necklace features an enchanting array of emerald cut and round diamonds. The diamonds are embraced in minimal metal settings, creating a delicately scintillating statement.",
-        price: 5590,
+          "Lorraine earrings are hanging gold earrings, classic earrings with a touch, full of chic and yet temporary A fun, comfortable and everyday earring that you don't take off the ear, the earring hangs on the ear The earring comes in a brushed matte finish There is a very similar earring, slightly smaller and close to the earring, here Each piece of jewelry is custom made to order",
+        price: 800,
         image: {
-          url: "https://www.graff.com/dw/image/v2/BFNT_PRD/on/demandware.static/-/Sites-master-catalog/default/dw36a31bfc/RGN469_RGN469_GN8550_Hero_1.jpg?sw=800&sh=800",
-          alt: "necklace",
+          url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToIq4QobdDLmjIKaKx-gXJOKxy5w3MFeuWjm5K9iaxzA&s",
+          alt: "Earrings",
         },
       },
       {
         title: "Diamond Necklace",
         description:
-          "Mesmerising in its elegant and delicate design, this Classic Graff platinum and white gold necklace features an enchanting array of emerald cut and round diamonds. The diamonds are embraced in minimal metal settings, creating a delicately scintillating statement.",
+          "Diamonds are forever, so is a diamond necklace set. Here are 75 diamond necklace designs to fit into every style and preference.",
         price: 5590,
         image: {
           url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeY4u9ewwhpzkwjiC6voUVbDHO8iP79q_jkVtR9yoOaw&s",
@@ -128,20 +128,19 @@ export const initDatabase = async () => {
         title: "Diamond Necklace",
         description:
           "Mesmerising in its elegant and delicate design, this Classic Graff platinum and white gold necklace features an enchanting array of emerald cut and round diamonds. The diamonds are embraced in minimal metal settings, creating a delicately scintillating statement.",
-        price: 5590,
+        price: 580,
         image: {
           url: "https://media2.bulgari.com/f_auto,q_auto,c_pad,h_520,w_520/production/dw184111c7/images/images/1448222.png",
           alt: "necklace",
         },
       },
       {
-        title: "Diamond Necklace",
-        description:
-          "Mesmerising in its elegant and delicate design, this Classic Graff platinum and white gold necklace features an enchanting array of emerald cut and round diamonds. The diamonds are embraced in minimal metal settings, creating a delicately scintillating statement.",
-        price: 5590,
+        title: "Gold Earrings",
+        description: "Gold hoop earrings for women - diameter 23 mm",
+        price: 345,
         image: {
           url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSm6PCjJHGRvfgAtfWZBvw2gZ7-P1VRc5cmqladN69Izg&s",
-          alt: "necklace",
+          alt: "Earrings",
         },
       },
     ];
