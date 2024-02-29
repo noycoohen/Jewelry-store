@@ -21,6 +21,10 @@ export default function ProductCard(props) {
     <Card
       sx={{
         maxWidth: 345,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        height: "100%",
       }}
       key={props.id}
     >

@@ -13,6 +13,16 @@ export const CartProvider = ({ children }) => {
     localStorage.setItem("Cart", JSON.stringify(cart));
   }, [cart]);
 
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token && cart.length > 0) {
+      setCart([]);
+      localStorage.removeItem("Cart");
+
+      toast.info("Session ended, cart cleared.");
+    }
+  }, [cart.length]);
+
   const addToCart = (product) => {
     setCart([...cart, product]);
     toast.success("Added to cart");

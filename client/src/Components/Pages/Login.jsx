@@ -56,7 +56,7 @@ const Login = () => {
         setInputs({ name: "", email: "", password: "" });
 
         setTimeout(() => {
-          nav("/");
+          nav("/", { replace: true });
           window.location.reload();
         }, 800);
       }

@@ -47,6 +47,10 @@ export const CartPage = () => {
           )}
         </div>
         <p>Total Price:{calculateTotalPrice()}$</p>
+        <br></br>
+        <hr></hr>
+        <br></br>
+        <button className="shop-button">Payment</button>
       </div>
     </Container>
   );

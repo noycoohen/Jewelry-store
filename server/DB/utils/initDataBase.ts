@@ -29,7 +29,7 @@ export const initDatabase = async () => {
         title: "RINGS",
         description:
           "Experienced software engineer with a passion for developing innovative programs that expedite the efficiency and effectiveness of organizational success.",
-        price: 30,
+        price: 9990,
         image: {
           url: "https://tzufa.co.il/cdn/shop/files/2f367d6cb88e447cc3900cddd5b3d9bb.jpg?v=1693866621&width=946",
           alt: "RINGS",
@@ -39,7 +39,7 @@ export const initDatabase = async () => {
         title: "NECKLACES",
         description:
           "Experienced software engineer with a passion for developing innovative programs that expedite the efficiency and effectiveness of organizational success.",
-        price: 30,
+        price: 300,
         image: {
           url: "https://tzufa.co.il/cdn/shop/collections/7712cb4420724c4e14a597a670a89eac.jpg?v=1623277748&width=2048",
           alt: "NECKLACES",
@@ -49,7 +49,7 @@ export const initDatabase = async () => {
         title: "EARRINGS",
         description:
           "Experienced software engineer with a passion for developing innovative programs that expedite the efficiency and effectiveness of organizational success.",
-        price: 30,
+        price: 2260,
         image: {
           url: "https://cdn.istores.co.il/image/upload/if_ar_gt_2:1/c_mpad,h_662,w_555/c_fill,h_662,w_555/if_else/c_fill,q_100,w_555/if_end/dpr_2/v1694011466/clients/13987/accf4e50f1777810639bd132089b358bbefd1177.jpg",
           alt: "EARRINGS",
@@ -58,11 +58,90 @@ export const initDatabase = async () => {
       {
         title: "BRACELETS",
         description:
-          "Experienced software engineer with a passion for developing innovative programs that expedite the efficiency and effectiveness of organizational success.",
-        price: 30,
+          "This eye-catching tennis bracelet embellishes the wrist with 10 carats of shimmering diamonds individually set in lustrous white gold links.",
+        price: 1480,
         image: {
           url: "https://static.wixstatic.com/media/694d73_4dbbad5729d2449db0c92b7526bf686c~mv2.jpg/v1/fill/w_480,h_651,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/694d73_4dbbad5729d2449db0c92b7526bf686c~mv2.jpg",
           alt: "BRACELETS",
+        },
+      },
+      {
+        title: "Diamond Tennis Bracelet",
+        description:
+          "Every girl dreams of someday getting a beautiful diamond bracelet from her man. This is your chance to wow her with 5 carats of brilliant sparkling diamonds!",
+        price: 2499,
+        image: {
+          url: "https://cdn11.bigcommerce.com/s-jnlnq3j8vo/images/stencil/1280x1280/products/9278/20849/b-170-148__89320.1649704677.jpg?c=1",
+          alt: "Bracelet",
+        },
+      },
+      {
+        title: "Diamond Earrings",
+        description:
+          "Beautiful Diamond Stud Earrings, Halo Style. 0.7 Carat Total Weight.",
+        price: 280,
+        image: {
+          url: "https://bestbrilliance.com/cdn/shop/products/J99971W_00000_a4efd8f0-01ab-4c5e-b8ae-927fc95091c5.jpg?v=1685971088&width=2500",
+          alt: "Earrings",
+        },
+      },
+      {
+        title: "Diamond Ring",
+        description: "14K Whit Gold",
+        price: 2720,
+        image: {
+          url: "https://www.jared.com/productimages/processed/V-993088400_3_800.jpg?pristine=true",
+          alt: "RING",
+        },
+      },
+      {
+        title: "Diamond Necklace",
+        description:
+          "Mesmerising in its elegant and delicate design, this Classic Graff platinum and white gold necklace features an enchanting array of emerald cut and round diamonds. The diamonds are embraced in minimal metal settings, creating a delicately scintillating statement.",
+        price: 5590,
+        image: {
+          url: "https://www.graff.com/dw/image/v2/BFNT_PRD/on/demandware.static/-/Sites-master-catalog/default/dw36a31bfc/RGN469_RGN469_GN8550_Hero_1.jpg?sw=800&sh=800",
+          alt: "necklace",
+        },
+      },
+      {
+        title: "Diamond Necklace",
+        description:
+          "Mesmerising in its elegant and delicate design, this Classic Graff platinum and white gold necklace features an enchanting array of emerald cut and round diamonds. The diamonds are embraced in minimal metal settings, creating a delicately scintillating statement.",
+        price: 5590,
+        image: {
+          url: "https://www.graff.com/dw/image/v2/BFNT_PRD/on/demandware.static/-/Sites-master-catalog/default/dw36a31bfc/RGN469_RGN469_GN8550_Hero_1.jpg?sw=800&sh=800",
+          alt: "necklace",
+        },
+      },
+      {
+        title: "Diamond Necklace",
+        description:
+          "Mesmerising in its elegant and delicate design, this Classic Graff platinum and white gold necklace features an enchanting array of emerald cut and round diamonds. The diamonds are embraced in minimal metal settings, creating a delicately scintillating statement.",
+        price: 5590,
+        image: {
+          url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeY4u9ewwhpzkwjiC6voUVbDHO8iP79q_jkVtR9yoOaw&s",
+          alt: "necklace",
+        },
+      },
+      {
+        title: "Diamond Necklace",
+        description:
+          "Mesmerising in its elegant and delicate design, this Classic Graff platinum and white gold necklace features an enchanting array of emerald cut and round diamonds. The diamonds are embraced in minimal metal settings, creating a delicately scintillating statement.",
+        price: 5590,
+        image: {
+          url: "https://media2.bulgari.com/f_auto,q_auto,c_pad,h_520,w_520/production/dw184111c7/images/images/1448222.png",
+          alt: "necklace",
+        },
+      },
+      {
+        title: "Diamond Necklace",
+        description:
+          "Mesmerising in its elegant and delicate design, this Classic Graff platinum and white gold necklace features an enchanting array of emerald cut and round diamonds. The diamonds are embraced in minimal metal settings, creating a delicately scintillating statement.",
+        price: 5590,
+        image: {
+          url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSm6PCjJHGRvfgAtfWZBvw2gZ7-P1VRc5cmqladN69Izg&s",
+          alt: "necklace",
         },
       },
     ];

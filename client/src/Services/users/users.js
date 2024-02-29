@@ -1,4 +1,5 @@
 import { jwtDecode } from "jwt-decode";
+import { toast } from "react-toastify";
 
 export const getUserInfo = (token) => {
   token ??= localStorage.getItem("token");
@@ -22,5 +23,9 @@ export const getUserType = (token) => {
 
 export const doSignOut = () => {
   localStorage.removeItem("token");
-  window.location.reload();
+  toast.success("You logged out");
+
+  setTimeout(() => {
+    window.location.reload();
+  }, 2000);
 };

@@ -10,8 +10,10 @@ import { CartContext } from "../../Contexts/CartProvider";
 import { Container } from "@mui/material";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { getUserType } from "../../Services/users/users";
 
 export function SingleProductGrid({ product }) {
+  const userType = getUserType();
   const { addToCart } = useContext(CartContext);
   const token = localStorage.getItem("token");
 
@@ -75,19 +77,20 @@ export function SingleProductGrid({ product }) {
             {product.price + "$"}
           </Typography>
         </CardContent>
-        <CardActions>
-          {isFavorited ? (
-            <IoIosHeart
-              onClick={toggleFavorite}
-              style={{ color: "red", cursor: "pointer" }}
-            />
-          ) : (
-            <IoIosHeartEmpty
-              onClick={toggleFavorite}
-              style={{ cursor: "pointer" }}
-            />
-          )}
 
+        <CardActions>
+          {userType === "regular" &&
+            (isFavorited ? (
+              <IoIosHeart
+                onClick={toggleFavorite}
+                style={{ color: "red", cursor: "pointer" }}
+              />
+            ) : (
+              <IoIosHeartEmpty
+                onClick={toggleFavorite}
+                style={{ cursor: "pointer" }}
+              />
+            ))}
           <Button
             onClick={() => addToCart(product)}
             size="small"

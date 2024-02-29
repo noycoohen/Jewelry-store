@@ -61,15 +61,6 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5veXlAZ
 }
 
 
-### partial update a user (only isBusiness):
-# PATCH http://localhost:8080/api/v1/users/657ec2c6c105647ed8c60ad1
-# Content-Type: application/json
-# Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5veUBlbWFpbC5jb20iLCJpZCI6IjY1N2VjMmM2YzEwNTY0N2VkOGM2MGFkMSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3MDI4MDY3OTB9.dDBxl9alM7QLa1gIuQYjKrV56nfMDvEI37jd3GgRQzc
-
-# {
-#   "isBusiness": true
-# }
-
 ### delete a user:
 DELETE http://localhost:8080/api/v1/users/65c5ef166cd1182384efccc1
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkFkbWluQGV4YW1wbGUuY29tIiwiaWQiOiI2NWNiYTUwOGNiNGM5MWUwZTBjM2FkMjciLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE3MDc5MzEyODh9.hoaXs_aWVhb2jiP0K1DAkRngkRe77BNYX_A5BcZlMYQ
