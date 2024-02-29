@@ -2,8 +2,9 @@
 
 # About the app:
 
-Server-side development for a web application, An online store that allows the guest to add products to the cart and registered users to save products in favorites.
-Administered by an admin user who can add, edit and delete products
+Server-side and Client-side development for a web application.
+An jewelry online store that allows the guest to add products to the cart and registered users to save products in favorites.
+Administered by an admin user who can add, edit and delete products.
 
 ## Installation
 
