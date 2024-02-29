@@ -5,6 +5,7 @@ import { Container } from "@mui/material";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { toast } from "react-toastify";
+import "../../Services/style/homePage.css";
 
 export function AddProducts() {
   const {
@@ -53,7 +54,12 @@ export function AddProducts() {
   return (
     <Container
       maxWidth="lg"
-      sx={{ textAlign: "center", mt: "3rem", minHeight: "700px" }}
+      sx={{
+        marginBottom: "60px",
+        textAlign: "center",
+        mt: "3rem",
+        minHeight: "700px",
+      }}
     >
       <Box
         component="form"
@@ -64,7 +70,6 @@ export function AddProducts() {
         alignItems={"center"}
         justifyContent={"center"}
         margin={"auto"}
-        marginTop={20}
         padding={3}
         borderRadius={5}
         boxShadow={"5px 5px 10px #ccc"}
@@ -89,7 +94,7 @@ export function AddProducts() {
           })}
           label="Title"
           type="text"
-          variant="standard"
+          variant="outlined"
         />
         {errors.title?.message}
 
@@ -103,7 +108,7 @@ export function AddProducts() {
           })}
           label="Price"
           type="number"
-          variant="standard"
+          variant="outlined"
         />
         {errors.price?.message}
         <TextField
@@ -120,7 +125,7 @@ export function AddProducts() {
           })}
           label="Description"
           type="text"
-          variant="standard"
+          variant="outlined"
         />
         {errors.description?.message}
         <TextField
@@ -137,7 +142,7 @@ export function AddProducts() {
           })}
           label="Image"
           type="text"
-          variant="standard"
+          variant="outlined"
         />
         {errors.image?.message}
 
@@ -155,11 +160,13 @@ export function AddProducts() {
           })}
           label="Alt"
           type="text"
-          variant="standard"
+          variant="outlined"
         />
         {errors.title?.message}
 
-        <button type="submit">Add product</button>
+        <button className="shop-button" type="submit">
+          Add product
+        </button>
       </Box>
     </Container>
   );

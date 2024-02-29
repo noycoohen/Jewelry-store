@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useParams } from "react-router-dom";
+import "../../Services/style/homePage.css";
 
 export function EditProduct() {
   const params = useParams();
@@ -69,7 +70,12 @@ export function EditProduct() {
   return (
     <Container
       maxWidth="lg"
-      sx={{ textAlign: "center", mt: "3rem", minHeight: "700px" }}
+      sx={{
+        marginBottom: "60px",
+        textAlign: "center",
+        mt: "3rem",
+        minHeight: "700px",
+      }}
     >
       <Box
         component="form"
@@ -105,7 +111,7 @@ export function EditProduct() {
           })}
           label="Title"
           type="text"
-          variant="standard"
+          variant="outlined"
           InputLabelProps={{
             shrink: true,
           }}
@@ -122,7 +128,7 @@ export function EditProduct() {
           })}
           label="Price"
           type="number"
-          variant="standard"
+          variant="outlined"
           InputLabelProps={{
             shrink: true,
           }}
@@ -142,7 +148,7 @@ export function EditProduct() {
           })}
           label="Description"
           type="text"
-          variant="standard"
+          variant="outlined"
           InputLabelProps={{
             shrink: true,
           }}
@@ -162,7 +168,7 @@ export function EditProduct() {
           })}
           label="Image"
           type="text"
-          variant="standard"
+          variant="outlined"
           InputLabelProps={{
             shrink: true,
           }}
@@ -183,14 +189,16 @@ export function EditProduct() {
           })}
           label="Alt"
           type="text"
-          variant="standard"
+          variant="outlined"
           InputLabelProps={{
             shrink: true,
           }}
         />
         {errors.title?.message}
 
-        <button type="submit">Update product</button>
+        <button className="shop-button" type="submit">
+          Update product
+        </button>
       </Box>
     </Container>
   );

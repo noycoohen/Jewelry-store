@@ -3,7 +3,6 @@ import Joi from "joi";
 import { joiUserSchema } from "../validators/user.joi";
 import { joiCardSchema } from "../validators/card.joi";
 import { joiLoginSchema } from "../validators/login.joi";
-import { joiUpdateUserSchema } from "../validators/update-user.joi";
 
 type ValidateSchema = (schema: Joi.ObjectSchema) => RequestHandler;
 
@@ -23,4 +22,3 @@ export const validateSchema: ValidateSchema =
 export const validateUser = validateSchema(joiUserSchema);
 export const validateLogin = validateSchema(joiLoginSchema);
 export const validateCard = validateSchema(joiCardSchema);
-export const validateUserUpdate = validateSchema(joiUpdateUserSchema);  
